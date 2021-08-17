@@ -12,24 +12,32 @@ Class MY_Model extends CI_Model{
     
     function get_all()
     {
+        $this->db->order_by($this->primary, $this->order);
+        return $this->db->get($this->table)->result();
+    }
+    
+    function get_cond($cond){
+        //$cond is array condition
+        $this->db->where($cond);
+        $this->db->order_by($this->primary, $this->order);
         return $this->db->get($this->table)->result();
     }
     
     
     function insert($data)
     {
-        $this->db->insert($this->table, $data);
+        return $this->db->insert($this->table, $data);
     }
     
     function update($id, $data)
     {
         $this->db->where($this->id, $id);
-        $this->db->update($this->table, $data);
+        return $this->db->update($this->table, $data);
     }
     
     function delete($id)
     {
         $this->db->where($this->id, $id);
-        $this->db->delete($this->table);
+        return $this->db->delete($this->table);
     }
 }

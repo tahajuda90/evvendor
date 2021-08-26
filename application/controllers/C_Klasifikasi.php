@@ -18,13 +18,18 @@ class C_Klasifikasi extends CI_Controller{
         $data['indikator'] = $this->M_KlasIdktr->get_cond(array('id_kualifikasi'=>$id));
         $data['page'] = 'page/KlasifikasiIndikator';
         $this->load->view('Main_v',$data);
-        //print_r($data);
     }
     
-    public function create(){}
-    
-    public function create_ind(){ 
+    public function create(){
+        $data['page'] = 'page/KlasifikasiPekerjaan';
+        $data['action'] = base_url('C_Klasifikasi/create_action');
+        $data['id_kualifikasi']= set_value('id_kualifikasi');
+        $data['nama_kualifikasi']= set_value('nama_kualifikasi');
+        $data['kode_kualifikasi']= set_value('kode_kualifikasi');        
+        $data['button'] = 'Tambah';
+        $this->load->view('Main_v',$data);
     }
+    
     
     public function create_action(){
         $data = array(
@@ -57,15 +62,59 @@ class C_Klasifikasi extends CI_Controller{
         print_r($hasil);
     }
     
-    public function update(){}
+    public function update($id){
+        $klas = $this->M_KlasP->get_by_id($id);
+        $data['page'] = 'page/KlasifikasiPekerjaan';
+        $data['action'] = base_url('C_Klasifikasi/update_action');
+        $data['id_kualifikasi']= $klas->id_kualifikasi;
+        $data['nama_kualifikasi']= $klas->nama_kualifikasi;
+        $data['kode_kualifikasi']= $klas->kode_kualifikasi; 
+        $data['button'] = 'Update';
+        $this->load->view('Main_v',$data);}
+        
+    public function update_action(){
+        $klas = $this->M_KlasP->get_by_id($this->input->post('id_kualifikasi',TRUE));
+        if(isset($klas)){
+            $data = array(
+            'nama_kualifikasi'=> $this->input->post('nama_kualifikasi',TRUE),
+            'kode_kualifikasi'=> $this->input->post('kode_kualifikasi',TRUE)
+            );
+            $this->M_KlasP->update($klas->id_kualifikasi,$data);
+        }else{
+            
+        }
+    }
     
-    public function update_ind(){}
+    public function update_action_ind(){
+        $bobot = $this->input->post('bobot');
+        foreach ($bobot as $key=>$bbt){            
+            $this->M_KlasIdktr->update($key,array('bobot'=>$bbt));
+        }
+        print_r($this->input->post('bobot'));
+    }
     
-    public function update_action(){}
+    public function delete($id){
+        $klas = $this->M_KlasP->get_by_id($id);
+        if(isset($klas)){
+            $this->M_KlasP->delete($klas->id_kualifikasi);
+        }else{
+            
+        }
+    }
     
-    public function update_action_ind(){}
-    
-    public function delete(){}
-    
-    public function delete_ind() {}
+    public function activation_ind($idk) {
+        $klasind = $this->M_KlasIdktr->get_by_id($idk);
+        if(isset($klasind)){
+            switch ($klasind->active){
+                case 1:
+                    $this->M_KlasIdktr->update($klasind->id_indkua,array('active'=>0));
+                    //redirect();
+                    break;
+                case 0:
+                    $this->M_KlasIdktr->update($klasind->id_indkua,array('active'=>1));
+                    //redirect();
+                    break;
+            }            
+        }
+    }
 }

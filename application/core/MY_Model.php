@@ -46,13 +46,13 @@ Class MY_Model extends CI_Model{
     
     function update($id, $data)
     {
-        $this->db->where($this->id, $id);
+        $this->db->where($this->primary, $id);
         return $this->db->update($this->table, $data);
     }
     
     function delete($id)
     {
-        $this->db->where($this->id, $id);
+        $this->db->where($this->primary,$id);
         return $this->db->delete($this->table);
     }
     
@@ -66,5 +66,35 @@ Class MY_Model extends CI_Model{
         $this->db->select($table1.".*,COUNT(".$table2.".".$key.") as child");
         $this->db->join($table2,$table1.'.'.$key.' = '.$table2.'.'.$key,'LEFT');
         $this->db->group_by($table1.'.'.$key);
+    }
+}
+
+
+class MY_Integrate extends CI_Model{
+    var $table = null;
+    protected $db = null;
+    
+    public function __construct() {
+        parent::__construct();
+        $this->db = $this->load->database('postgre://postgres:3april2014@localhost/simponi', TRUE);
+    }
+    
+    function all()
+    {
+        return $this->db->get($this->table)->result();
+    }
+    
+    function by_id($col,$id)
+    {
+        $this->db->where($col, $id);
+        return $this->db->get($this->table)->row();
+    }
+    
+    function is_online(){
+        if($this->db->get($this->table)){
+            return true;
+        }else{
+            return false; 
+        }
     }
 }

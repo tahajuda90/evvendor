@@ -79,3 +79,9 @@
 		if (!$full) $string = array_slice($string, 0, 1);
 		return $string ? implode(', ', $string) . '.' : 'just now';
 	}
+        function rupiah($angka){
+	
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+ 
+        }

@@ -1,0 +1,123 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class C_Integrasi extends CI_Controller{
+    var $sess =null;
+    public function __construct(){
+        parent::__construct();
+        $this->load->model(array('Integrasi/M_ISatker','Integrasi/M_IBentukU','Integrasi/M_IPaket','Integrasi/M_IKontrak','Integrasi/M_IRekanan'));
+        $this->sess = $this->session->get_userdata();
+    }
+    
+    public function satker(){
+        if($this->M_ISatker->is_online()){
+        $data['stkr']=$this->M_ISatker->all();
+        $data['page'] = 'page/IntegrasiSatuanKerja';
+        //var_dump(property_exists($data['stkr'][0], "id_satker"));
+        $this->load->view('Main_v',$data);
+        }else{
+            show_404();
+        }
+    }
+    
+    public function satker_save($stk){
+        if($this->M_ISatker->save($stk)){
+            redirect($this->sess['last_url']);
+        }else{
+            redirect($this->sess['last_url']);
+        }
+        //redirect() ke C_SatuanKerja/index dengan session message didalam if;
+    }
+    
+    public function bentukU_save(){
+        if($this->M_IBentukU->is_online()){
+            print_r($this->M_IBentukU->save());
+        }else{
+            show_404();
+        }
+    }
+    
+    public function paket(){
+        $llg = $this->input->post('lls_id');
+        $pkt = $this->M_IPaket->by_id('lls_id',$llg);
+        if ($this->M_IPaket->is_online()) {
+            if ($this->M_IPaket->satker_check($llg)) {
+                $data['title'] = $pkt->stk_nama;
+                $data['body'] = "Tahun : " . $pkt->tahun . "<br><b>" . $pkt->pkt_nama . "</b><br> Pagu : " . rupiah($pkt->pkt_pagu) . "<br>" .
+                        ($pkt->status == 1 ? 'Non-Tender' : 'Tender')
+                ;
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Integrasi/paket_save/').$pkt->pkt_id.'" type="button">Tarik</a>';
+            } else if(isset($pkt)){
+                $data['title'] = $pkt->stk_nama;
+                $data['body'] = 'Data opd belum di integrasikan klik tombol integrasi untuk melanjutkan dan ulangi tarik paket';
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Integrasi/satker_save/').$pkt->stk_id.'" type="button">Integrasi</a>';
+            } else {
+                $data['title'] = 'Paket Tidak Ditemukan';
+                $data['body'] = 'Kode tender yang anda masukan tidak sesuai <br> Pastikan data LPSE terupdate / klik tombol dibawah ini untuk membuat paket secara manual';
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_PaketKontrak/create').'" type="button">Buat Paket</a>';
+                //jangan lupa href disamakan dengan routes
+            }
+        }else{
+            $data['title'] = 'Data Tidak Terhubung';
+            $data['body'] = 'Data LPSE Tidak Terhubung Pada Sistem';
+            $data['button'] = '';
+        }
+        $this->load->view('component/modal',$data);
+    }
+    
+    public function paket_save($id){
+        if($this->M_IPaket->save($id)){
+            redirect($this->sess['last_url']);
+        }else{
+            redirect($this->sess['last_url']);
+        }
+        //redirect() ke C_PaketKontrak/index dengan session message didalam if;
+    }
+    public function kontrak_save($lls_id){
+        if($this->M_IKontrak->is_online()){
+            if($this->M_IKontrak->save($lls_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect($this->sess['last_url']);
+            }
+        }else{
+            redirect($this->sess['last_url']);
+        }
+        //redirect() ke C_PaketKontrak/index dengan session message didalam if;
+    }
+    
+    public function penyedia(){
+        //$npwp = '92.493.425.0-622.000';
+        //$rknid = '279590';
+        if($this->M_IRekanan->is_online()){
+            if($this->M_IRekanan->by_id('rkn_npwp', $this->input->get('npwp'))) {
+                $rkn = $this->M_IRekanan->by_id('rkn_npwp', $this->input->get('npwp'));
+                $data['title'] = $rkn->rkn_nama;
+                $data['body'] = '<b>Bentuk Usaha :</b> '.$rkn->btu_nama
+                        .'<br><b>NPWP :</b> '.$rkn->rkn_npwp.'<br>'.$rkn->rkn_alamat.'<br> <b>Asal Kota/Kabupaten :</b> '.$rkn->kbp_nama;
+                $data['button'] = '';
+            } else if ($this->M_IRekanan->by_id('rkn_id', $this->input->get('rkn_id'))) {
+                $rkn = $this->M_IRekanan->by_id('rkn_id', $this->input->get('rkn_id'));
+                $data['title'] = $rkn->rkn_nama;
+                $data['body'] = '<b>Bentuk Usaha :</b> '.$rkn->btu_nama
+                        .'<br><b>NPWP :</b> '.$rkn->rkn_npwp.'<br>'.$rkn->rkn_alamat.'<br> <b>Asal Kota/Kabupaten :</b> '.$rkn->kbp_nama;
+                $data['button'] = '';
+            }else{
+                $data['title'] = 'Penyedia Tidak Ditemukan';
+                $data['body'] = 'Pastikan Penyedia Terdapat Pada Sistem LPSE';
+                $data['button'] = '';
+            }
+        }else{
+            $data['title'] = 'Data Tidak Terhubung';
+            $data['body'] = 'Data LPSE Tidak Terhubung Pada Sistem';
+            $data['button'] = '';
+        }
+        $this->load->view('component/modal',$data);
+        
+    }
+    
+    public function penyedia_save(){
+        
+    }
+}
+

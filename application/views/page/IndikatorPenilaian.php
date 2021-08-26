@@ -12,7 +12,13 @@
 <div class="row">
     <div class="col-md-12">
         <div class="tile">
-            <h3 class="tile-title">Daftar Indikator Penilaian <?= $group->nama_group?></h3>
+            <h3 class="tile-title">Input Indikator Penilaian</h3>
+            <div class="tile-body">
+                <?php $this->load->view('component/form/input_indikator_penilaian');?>
+            </div>
+        </div>
+        <div class="tile">
+            <h3 class="tile-title">Daftar Indikator Penilaian <?= ucfirst($group->nama_group)?></h3>
             <div class="tile-body">
                 <table class="table table-bordered">
                     <thead>

@@ -9,6 +9,12 @@ class M_Satker extends MY_Model{
     
     public function __construct() {
         parent::__construct();
+        $this->load->model('M_Paket');
+    }
+    
+    public function get_all() {
+        $this->child($this->table, $this->M_Paket->table, $this->primary);
+        return parent::get_all();
     }
 }
 

@@ -11,9 +11,15 @@
 <div class="row">
     <div class="col-md-12">
         <div class="tile">
+            <h3 class="tile-title">Input Group Penilaian</h3>
+            <div class="tile-body">
+                <?php $this->load->view('component/form/input_group_penilaian');?>
+            </div>
+        </div>
+        <div class="tile">
             <h3 class="tile-title">Daftar Group Penilaian</h3>
             <div class="tile-body">
-                <table class="table table-bordered">
+            <table class="table table-bordered">
               <thead>
                 <tr>
                   <th>No</th>

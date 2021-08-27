@@ -25,7 +25,7 @@ Class MY_Model extends CI_Model{
     
     function get_by_id($id)
     {
-        $this->db->where($this->primary, $id);
+        $this->db->where($this->table.'.'.$this->primary, $id);
         return $this->db->get($this->table)->row();
     }
     
@@ -56,7 +56,7 @@ Class MY_Model extends CI_Model{
         return $this->db->delete($this->table);
     }
     
-    function count($cond){
+    private function count($cond){
         //$cond is array condition
         $this->db->where($cond);
         return $this->db->get($this->table)->num_rows();

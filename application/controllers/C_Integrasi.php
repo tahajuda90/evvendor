@@ -86,26 +86,27 @@ class C_Integrasi extends CI_Controller{
         //redirect() ke C_PaketKontrak/index dengan session message didalam if;
     }
     
-    public function penyedia(){
+    public function status_penyedia(){
         //$npwp = '92.493.425.0-622.000';
         //$rknid = '279590';
+//        else if ($this->M_IRekanan->by_id('rkn_id', $this->input->get('rkn_id'))) {
+//                $rkn = $this->M_IRekanan->by_id('rkn_id', $this->input->get('rkn_id'));
+//                $data['title'] = $rkn->rkn_nama;
+//                $data['body'] = '<b>Bentuk Usaha :</b> '.$rkn->btu_nama
+//                        .'<br><b>NPWP :</b> '.$rkn->rkn_npwp.'<br>'.$rkn->rkn_alamat.'<br> <b>Asal Kota/Kabupaten :</b> '.$rkn->kbp_nama;
+//                $data['button'] = '';
+//            }
         if($this->M_IRekanan->is_online()){
             if($this->M_IRekanan->by_id('rkn_npwp', $this->input->get('npwp'))) {
                 $rkn = $this->M_IRekanan->by_id('rkn_npwp', $this->input->get('npwp'));
                 $data['title'] = $rkn->rkn_nama;
                 $data['body'] = '<b>Bentuk Usaha :</b> '.$rkn->btu_nama
                         .'<br><b>NPWP :</b> '.$rkn->rkn_npwp.'<br>'.$rkn->rkn_alamat.'<br> <b>Asal Kota/Kabupaten :</b> '.$rkn->kbp_nama;
-                $data['button'] = '';
-            } else if ($this->M_IRekanan->by_id('rkn_id', $this->input->get('rkn_id'))) {
-                $rkn = $this->M_IRekanan->by_id('rkn_id', $this->input->get('rkn_id'));
-                $data['title'] = $rkn->rkn_nama;
-                $data['body'] = '<b>Bentuk Usaha :</b> '.$rkn->btu_nama
-                        .'<br><b>NPWP :</b> '.$rkn->rkn_npwp.'<br>'.$rkn->rkn_alamat.'<br> <b>Asal Kota/Kabupaten :</b> '.$rkn->kbp_nama;
-                $data['button'] = '';
-            }else{
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Integrasi/penyedia_save/').$rkn->rkn_id.'" type="button">Tarik</a>';
+            } else{
                 $data['title'] = 'Penyedia Tidak Ditemukan';
                 $data['body'] = 'Pastikan Penyedia Terdapat Pada Sistem LPSE';
-                $data['button'] = '';
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Rekanan/create').'" type="button">Buat Paket</a>';
             }
         }else{
             $data['title'] = 'Data Tidak Terhubung';
@@ -116,7 +117,58 @@ class C_Integrasi extends CI_Controller{
         
     }
     
-    public function penyedia_save(){
+    public function penyedia_save($rkn_id){
+        if($this->M_IRekanan->save($rkn_id)){
+            redirect($this->sess['last_url']);
+        }else{
+            redirect($this->sess['last_url']);
+        };
+    }
+    
+    public function penyedia(){
+        if($this->input->get('npwp')){
+            $rkn_id = array('kolom'=>'rkn_npwp','value'=>$this->input->get('npwp'));
+        }else{
+            $rkn_id = array('kolom'=>'rkn_id','value'=>$this->input->get('rkn_id'));
+        } 
+        if($this->M_IRekanan->is_online()){
+            $rkn = $this->M_IRekanan->status($rkn_id)['online'];
+            $rknof = $this->M_IRekanan->status($rkn_id)['lokal'][0];
+            if(!empty($rkn) && empty($rknof)){
+                $data['title'] = $rkn->rkn_nama;
+                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rkn->btu_nama
+                        . '<br><b>NPWP :</b> ' . $rkn->rkn_npwp . '<br>' . $rkn->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rkn->kbp_nama;
+                $data['button'] = '<a class="btn btn-primary" href="' . base_url('C_Integrasi/penyedia_save/') . $rkn->rkn_id . '" type="button">Tarik</a>';
+            }else if(!empty($rknof) && $this->input->get('kontrak')){
+                
+                $data['title'] = $rknof->rkn_nama;
+                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof->btu_nama
+                        . '<br><b>NPWP :</b> ' . $rknof->rkn_npwp . '<br>' . $rknof->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof->kbp;
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_PaketKontrak/assign_penyedia?id_kontrak='.$this->input->get('kontrak').'&id_rekanan='.$rknof->id_rekanan).'" type="button">Pilih</a>';
+            }else if(!empty($rkn) && !empty($rknof)){
+                $data['title'] = $rknof->rkn_nama;
+                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof->btu_nama
+                        . '<br><b>NPWP :</b> ' . $rknof->rkn_npwp . '<br>' . $rknof->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof->kbp;
+                $data['button'] = '<a class="btn btn-primary" type="button">Integrasi</a>';
+            }else if(empty($rkn) && !empty($rknof)){
+                $data['title'] = $rknof->rkn_nama;
+                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof->btu_nama
+                        . '<br><b>NPWP :</b> ' . $rknof->rkn_npwp . '<br>' . $rknof->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof->kbp;
+                $data['button'] = '';
+            }else{
+                $data['title'] = 'Penyedia Tidak Ditemukan';
+                $data['body'] = 'Pastikan Penyedia Terdapat Pada Sistem LPSE';
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Rekanan/create').'" type="button">Buat Paket</a>';
+            }
+        }else{
+            $data['title'] = 'Data Tidak Terhubung';
+            $data['body'] = 'Data LPSE Tidak Terhubung Pada Sistem';
+            $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Rekanan/create').'" type="button">Buat Paket</a>';
+        }
+        $this->load->view('component/modal',$data);
+    }
+    
+    public function sinkron_penyedia($npwp){
         
     }
 }

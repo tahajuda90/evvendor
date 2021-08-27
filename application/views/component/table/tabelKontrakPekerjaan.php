@@ -31,15 +31,15 @@
             <tr>
                 <td><?=$kntr->kontrak_no?></td>
                 <td><?php
-                if(isset($kntr->rkn_id) && !isset($kntr->id_rekanan)){
-                    echo '<a type="button" id="tarik" data-toggle="modal" class="btn btn-primary btn-sm" href="'. base_url('C_Integrasi/penyedia?rkn_id='.$kntr->rkn_id).'">Tarik Data</a>';
+                if(isset($kntr->rkn_id)&&!isset($kntr->id_rekanan)){
+                    echo '<a type="button" id="tarik" data-toggle="modal" class="btn btn-primary btn-sm" href="'. base_url('C_Integrasi/penyedia?kontrak='.$kntr->id_kontrak.'&rkn_id='.$kntr->rkn_id).'"><i class="fa fa-download"></i> Tarik Data</a>';
                 }else if(!isset($kntr->id_rekanan)){
                     echo '<form method="GET" id="subnpwp" action="'.base_url('C_Integrasi/penyedia').'"><div class="input-group"><input class="form-control form-control-sm" id="npwp" name="npwp" type="text" placeholder="NPWP Penyedia">
                 <button type="button" id="tarik2" class="btn btn-primary btn-sm input-group-append">
                     <i class="fa fa-download"></i> Tarik Data
                 </button></form>';
                 }else{
-                    echo 'detail';
+                    echo '<a type="button" id="tarik" data-toggle="modal" class="btn btn-primary btn-sm" href="'. base_url('C_Rekanan/penyedia/detail/'.$kntr->id_rekanan).'"><i class="fa fa-info-circle" ></i> Detail</a>';
                 }
                 ?>
                 </td>

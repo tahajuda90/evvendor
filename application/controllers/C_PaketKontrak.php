@@ -97,5 +97,16 @@ class C_PaketKontrak extends CI_Controller{
     public function delete(){}
     
     public function delete_ktr(){}
+    
+    public function assign_penyedia(){
+        $idkntr = $this->input->get('id_kontrak');
+        $idrkn = $this->input->get('id_rekanan');
+        $data = array('id_rekanan'=>$idrkn);
+        if($this->M_Kontrak->update($idkntr,$data)){
+            redirect( $this->session->get_userdata()['last_url']);
+        }else{
+            redirect($this->session->get_userdata()['last_url']);
+        }
+    }
 }
 

@@ -39,7 +39,7 @@
                     <i class="fa fa-download"></i> Tarik Data
                 </button></form>';
                 }else{
-                    echo '<a type="button" id="tarik" data-toggle="modal" class="btn btn-primary btn-sm" href="'. base_url('C_Rekanan/penyedia/detail/'.$kntr->id_rekanan).'"><i class="fa fa-info-circle" ></i> Detail</a>';
+                    echo '<a type="button" id="tarik" data-toggle="modal" class="btn btn-primary btn-sm" href="'. base_url('C_Rekanan/detail/'.$kntr->id_rekanan).'"><i class="fa fa-info-circle" ></i> Detail</a>';
                 }
                 ?>
                 </td>

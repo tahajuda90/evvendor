@@ -133,7 +133,7 @@ class C_Integrasi extends CI_Controller{
         } 
         if($this->M_IRekanan->is_online()){
             $rkn = $this->M_IRekanan->status($rkn_id)['online'];
-            $rknof = $this->M_IRekanan->status($rkn_id)['lokal'][0];
+            $rknof = $this->M_IRekanan->status($rkn_id)['lokal'];
             if(!empty($rkn) && empty($rknof)){
                 $data['title'] = $rkn->rkn_nama;
                 $data['body'] = '<b>Bentuk Usaha :</b> ' . $rkn->btu_nama
@@ -141,19 +141,19 @@ class C_Integrasi extends CI_Controller{
                 $data['button'] = '<a class="btn btn-primary" href="' . base_url('C_Integrasi/penyedia_save/') . $rkn->rkn_id . '" type="button">Tarik</a>';
             }else if(!empty($rknof) && $this->input->get('kontrak')){
                 
-                $data['title'] = $rknof->rkn_nama;
-                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof->btu_nama
-                        . '<br><b>NPWP :</b> ' . $rknof->rkn_npwp . '<br>' . $rknof->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof->kbp;
-                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_PaketKontrak/assign_penyedia?id_kontrak='.$this->input->get('kontrak').'&id_rekanan='.$rknof->id_rekanan).'" type="button">Pilih</a>';
+                $data['title'] = $rknof[0]->rkn_nama;
+                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof[0]->btu_nama
+                        . '<br><b>NPWP :</b> ' . $rknof[0]->rkn_npwp . '<br>' . $rknof[0]->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof[0]->kbp;
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_PaketKontrak/assign_penyedia?id_kontrak='.$this->input->get('kontrak').'&id_rekanan='.$rknof[0]->id_rekanan).'" type="button">Pilih</a>';
             }else if(!empty($rkn) && !empty($rknof)){
-                $data['title'] = $rknof->rkn_nama;
-                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof->btu_nama
-                        . '<br><b>NPWP :</b> ' . $rknof->rkn_npwp . '<br>' . $rknof->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof->kbp;
+                $data['title'] = $rknof[0]->rkn_nama;
+                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof[0]->btu_nama
+                        . '<br><b>NPWP :</b> ' . $rknof[0]->rkn_npwp . '<br>' . $rknof[0]->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof[0]->kbp;
                 $data['button'] = '<a class="btn btn-primary" type="button">Integrasi</a>';
             }else if(empty($rkn) && !empty($rknof)){
-                $data['title'] = $rknof->rkn_nama;
-                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof->btu_nama
-                        . '<br><b>NPWP :</b> ' . $rknof->rkn_npwp . '<br>' . $rknof->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof->kbp;
+                $data['title'] = $rknof[0]->rkn_nama;
+                $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof[0]->btu_nama
+                        . '<br><b>NPWP :</b> ' . $rknof[0]->rkn_npwp . '<br>' . $rknof[0]->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof[0]->kbp;
                 $data['button'] = '';
             }else{
                 $data['title'] = 'Penyedia Tidak Ditemukan';

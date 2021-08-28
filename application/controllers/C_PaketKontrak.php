@@ -39,7 +39,20 @@ class C_PaketKontrak extends CI_Controller{
         $this->load->view('Main_v',$data);
     }
     
-    public function create_ktr(){}
+    public function create_ktr($id){
+        $data['pkt'] = $this->M_Paket->get_by_id($id);
+        $data['page'] = 'page/KontrakPekerjaan';
+        $data['action']= base_url('C_PaketKontrak/create_action_ktr');
+        $data['id_kontrak']= set_value('id_kontrak');
+        $data['id_paket']= $data['pkt']->id_paket;
+        $data['lls_id']= $data['pkt']->lls_id;
+        $data['kontrak_no']= set_value('kontrak_no');
+        $data['nilai_kontrak']= set_value('nilai_kontrak');
+        $data['kontrak_mulai']= set_value('kontrak_mulai');
+        $data['kontrak_akhir']= set_value('kontrak_akhir');
+        $data['button']='Tambah';
+        $this->load->view('Main_v',$data);
+    }
     
     public function create_action(){
         $data = array(
@@ -55,7 +68,17 @@ class C_PaketKontrak extends CI_Controller{
         $this->M_Paket->insert($data,array('lls_id'=>$data['lls_id']));
     }
     
-    public function create_action_ktr(){}
+    public function create_action_ktr(){
+        $data =array(
+            'id_paket'=> $this->input->post('id_paket',TRUE),
+            'lls_id'=> $this->input->post('lls_id',TRUE),
+            'kontrak_no'=> $this->input->post('kontrak_no',TRUE),
+            'nilai_kontrak'=> $this->input->post('nilai_kontrak',TRUE),
+            'kontrak_mulai'=> fdatetimetodb($this->input->post('kontrak_mulai',TRUE)),
+            'kontrak_akhir'=> fdatetimetodb($this->input->post('kontrak_akhir',TRUE))
+        );
+        $this->M_Kontrak->insert($data,array('id_paket'=>$data['id_paket']));
+    }
     
     public function update($id){
         $pkt = $this->M_Paket->get_by_id($id);
@@ -75,7 +98,21 @@ class C_PaketKontrak extends CI_Controller{
         $this->load->view('Main_v',$data);
     }
     
-    public function update_ktr(){}
+    public function update_ktr($id){
+        $kntr = $this->M_Kontrak->get_by_id($id);
+        $data['pkt'] = $this->M_Paket->get_by_id($kntr->id_paket);
+        $data['page'] = 'page/KontrakPekerjaan';
+        $data['action']= base_url('C_PaketKontrak/update_action_ktr');
+        $data['id_kontrak']= $kntr->id_kontrak;
+        $data['id_paket']= $kntr->id_paket;
+        $data['lls_id']= $kntr->lls_id;
+        $data['kontrak_no']= $kntr->kontrak_no;
+        $data['nilai_kontrak']= $kntr->nilai_kontrak;
+        $data['kontrak_mulai']= fdate($kntr->kontrak_mulai);
+        $data['kontrak_akhir']= fdate($kntr->kontrak_akhir);
+        $data['button']='Update';
+        $this->load->view('Main_v',$data);
+    }
     
     public function update_action(){
         $msuk = $this->M_Paket->get_by_id($this->input->post('id_paket',TRUE));
@@ -92,7 +129,18 @@ class C_PaketKontrak extends CI_Controller{
         $this->M_Paket->update($msuk->id_paket,$data);
     }
     
-    public function update_action_ktr(){}
+    public function update_action_ktr(){
+        $msuk = $this->M_Kontrak->get_by_id($this->input->post('id_kontrak',TRUE));
+        $data = array(
+            'id_paket'=> $this->input->post('id_paket',TRUE),
+            'lls_id'=> $this->input->post('lls_id',TRUE),
+            'kontrak_no'=> $this->input->post('kontrak_no',TRUE),
+            'nilai_kontrak'=> $this->input->post('nilai_kontrak',TRUE),
+            'kontrak_mulai'=> fdatetimetodb($this->input->post('kontrak_mulai',TRUE)),
+            'kontrak_akhir'=> fdatetimetodb($this->input->post('kontrak_akhir',TRUE))
+        );
+        $this->M_Kontrak->update($msuk->id_kontrak,$data);
+    }
     
     public function delete(){}
     

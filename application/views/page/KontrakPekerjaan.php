@@ -14,7 +14,13 @@
         <div class="tile">
             <h3 class="tile-title"><?= isset($button) ? $button : 'Daftar'?> Kontrak Pekerjaan</h3>
             <div class="tile-body">
-                <?php $this->load->view('component/table/tabelKontrakPekerjaan')?>
+                <?php 
+                if(isset($button)){
+                    $this->load->view('component/form/input_kontrak_pekerjaan');
+                }else{
+                    $this->load->view('component/table/tabelKontrakPekerjaan');   
+                }
+                 ?>
             </div>
         </div>
     </div>

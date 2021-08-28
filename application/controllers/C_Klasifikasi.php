@@ -29,8 +29,7 @@ class C_Klasifikasi extends CI_Controller{
         $data['button'] = 'Tambah';
         $this->load->view('Main_v',$data);
     }
-    
-    
+        
     public function create_action(){
         $data = array(
             'nama_kualifikasi'=> $this->input->post('nama_kualifikasi',TRUE),

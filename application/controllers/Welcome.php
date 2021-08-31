@@ -16,16 +16,11 @@ class Welcome extends CI_Controller {
 //            }else{
 //                var_dump($q->result());
 //            }
-            
 //        print_r($this->M_IPaket->get_cond(array('lls_id'=>2500590)));
-            
-        
-
-
-//        print_r($this->M_ISatker->all());
-        
+//        print_r($this->M_ISatker->all());        
 //        print_r($this->M_ISatker->save(563590));
             
 		//$this->load->view('welcome_message');
+                print_r(load_menu()['penilaian']);
 	}
 }

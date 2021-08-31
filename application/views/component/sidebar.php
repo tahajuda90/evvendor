@@ -1,54 +1,24 @@
 <aside class="app-sidebar">
-      <div class="app-sidebar__user">
+    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="<?= base_url('assets/Lambang_Kabupaten_Mojokerto.png')?>" style="height: 90px;width: 50px;">
         <div>
-          <p class="app-sidebar__user-name">John Doe</p>
-          <p class="app-sidebar__user-designation">Frontend Developer</p>
+          <p class="app-sidebar__user-name">Kab. Mojokerto</p>
+          <p class="app-sidebar__user-designation">Bag. <br>Pengadaan Barang/Jasa</p>
         </div>
       </div>
-      <!--<ul class="app-menu">
-        <li><a class="app-menu__item" href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">UI Elements</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="bootstrap-components.html"><i class="icon fa fa-circle-o"></i> Bootstrap Elements</a></li>
-            <li><a class="treeview-item" href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Font Icons</a></li>
-            <li><a class="treeview-item" href="ui-cards.html"><i class="icon fa fa-circle-o"></i> Cards</a></li>
-            <li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>
-          </ul>
-        </li>
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Charts</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Forms</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-circle-o"></i> Form Components</a></li>
-            <li><a class="treeview-item" href="form-custom.html"><i class="icon fa fa-circle-o"></i> Custom Components</a></li>
-            <li><a class="treeview-item" href="form-samples.html"><i class="icon fa fa-circle-o"></i> Form Samples</a></li>
-            <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o"></i> Form Notifications</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Tables</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="table-basic.html"><i class="icon fa fa-circle-o"></i> Basic Tables</a></li>
-            <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i> Data Tables</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Blank Page</a></li>
-            <li><a class="treeview-item" href="page-login.html"><i class="icon fa fa-circle-o"></i> Login Page</a></li>
-            <li><a class="treeview-item" href="page-lockscreen.html"><i class="icon fa fa-circle-o"></i> Lockscreen Page</a></li>
-            <li><a class="treeview-item" href="page-user.html"><i class="icon fa fa-circle-o"></i> User Page</a></li>
-            <li><a class="treeview-item" href="page-invoice.html"><i class="icon fa fa-circle-o"></i> Invoice Page</a></li>
-            <li><a class="treeview-item" href="page-calendar.html"><i class="icon fa fa-circle-o"></i> Calendar Page</a></li>
-            <li><a class="treeview-item" href="page-mailbox.html"><i class="icon fa fa-circle-o"></i> Mailbox</a></li>
-            <li><a class="treeview-item" href="page-error.html"><i class="icon fa fa-circle-o"></i> Error Page</a></li>
-          </ul>
-        </li>
-      </ul>-->
       <ul class="app-menu">
-          <li><a class="app-menu__item" href="<?= base_url('Template/Blank')?>"><span class="app-menu__label">Blank Page</span></a></li>
-          <li><a class="app-menu__item" href="<?= base_url('Template/Form')?>"><span class="app-menu__label">Template Form</span></a></li>
-          <li><a class="app-menu__item" href="<?= base_url('Template/penilaian')?>"><span class="app-menu__label">Penilaian</span></a></li>
-          <li><a class="app-menu__item" href="<?= base_url('Template/paket')?>"><span class="app-menu__label">Paket Pekerjaan</span></a></li>
-          <li><a class="app-menu__item" href="<?= base_url('Template/satuan')?>"><span class="app-menu__label">Satuan Kerja</span></a></li>
-          <li><a class="app-menu__item" href="<?= base_url('Template/penyedia')?>"><span class="app-menu__label">Penyedia</span></a></li>
+          <?php
+          foreach(load_menu() as $menu){
+              if(isset($menu['sub'])){
+                  echo '<li class="treeview '.(in_array($this->uri->segment(1), array_keys($menu['sub'])) ? 'is-expanded':'').'"><a class="app-menu__item" href="#" data-toggle="treeview">'.$menu['ikon'].'<span class="app-menu__label">'.$menu['menu'].'</span><i class="treeview-indicator fa fa-angle-right"></i></a>'
+                          . '<ul class="treeview-menu">';
+                  foreach($menu['sub'] as $key=>$sub){
+                      echo '<li><a class="treeview-item '.($this->uri->segment(1) === $key ? 'active':'').'" href="'. base_url($key).'"><i class="icon fa fa-circle-o"></i>'.$sub.'</a></li>';
+                  }
+                  echo '</ul></li>';
+              }else{
+                  echo '<li><a class="app-menu__item '.($this->uri->segment(1) === $menu['link'] ? 'active' : '').'" href="'.base_url($menu['link']).'">'.$menu['ikon'].'<span class="app-menu__label">'.$menu['menu'].'</span></a></li>';
+              }
+          }
+          ?>
       </ul>
     </aside>

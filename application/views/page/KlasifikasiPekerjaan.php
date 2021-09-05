@@ -12,6 +12,7 @@
     <div class="col-md-12">
         <div class="tile">
             <h3 class="tile-title"><?= isset($button) ? $button : 'Daftar'?> Kualifikasi Pekerjaan</h3>
+            <?= (isset($button) ? '':'<a type="button" class="btn btn-sm btn-primary" href="'. base_url('kualifikasi/create').'"><i class="fa fa-plus"></i> Tambah</a>')?>
             <div class="tile-body">
                 <?php 
                 if(isset($button)){

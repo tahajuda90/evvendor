@@ -35,7 +35,11 @@ class C_Klasifikasi extends CI_Controller{
             'nama_kualifikasi'=> $this->input->post('nama_kualifikasi',TRUE),
             'kode_kualifikasi'=> $this->input->post('kode_kualifikasi',TRUE)
         );
-        $this->M_KlasP->insert($data);
+        if($this->M_KlasP->insert($data)){
+            redirect('kualifikasi');
+        }else{
+            redirect('kualifikasi');
+        }
     }
     
     public function create_action_ind(){
@@ -58,7 +62,7 @@ class C_Klasifikasi extends CI_Controller{
                 $hasil['salah']=$hasil['salah']+1;
             }
         }
-        print_r($hasil);
+        redirect('kualifikasi/indikator/'.$data['klasifikasi']->id_kualifikasi);
     }
     
     public function update($id){
@@ -79,8 +83,9 @@ class C_Klasifikasi extends CI_Controller{
             'kode_kualifikasi'=> $this->input->post('kode_kualifikasi',TRUE)
             );
             $this->M_KlasP->update($klas->id_kualifikasi,$data);
+            redirect('kualifikasi');
         }else{
-            
+            redirect('kualifikasi');
         }
     }
     
@@ -89,15 +94,16 @@ class C_Klasifikasi extends CI_Controller{
         foreach ($bobot as $key=>$bbt){            
             $this->M_KlasIdktr->update($key,array('bobot'=>$bbt));
         }
-        print_r($this->input->post('bobot'));
+        redirect('kualifikasi/indikator/'.$this->input->post('id_kualifikasi'));
     }
     
     public function delete($id){
         $klas = $this->M_KlasP->get_by_id($id);
         if(isset($klas)){
             $this->M_KlasP->delete($klas->id_kualifikasi);
+            redirect('kualifikasi');
         }else{
-            
+            redirect('kualifikasi');
         }
     }
     
@@ -107,11 +113,11 @@ class C_Klasifikasi extends CI_Controller{
             switch ($klasind->active){
                 case 1:
                     $this->M_KlasIdktr->update($klasind->id_indkua,array('active'=>0));
-                    //redirect();
+                    redirect('kualifikasi/indikator/'.$klasind->id_kualifikasi);
                     break;
                 case 0:
                     $this->M_KlasIdktr->update($klasind->id_indkua,array('active'=>1));
-                    //redirect();
+                    redirect('kualifikasi/indikator/'.$klasind->id_kualifikasi);
                     break;
             }            
         }

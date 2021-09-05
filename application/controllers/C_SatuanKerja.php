@@ -33,7 +33,11 @@ class C_SatuanKerja extends CI_Controller{
         'stk_telepon'=> $this->input->post('stk_telepon',TRUE),
         'stk_kode'=> $this->input->post('stk_kode',TRUE)
         );
-        $this->M_Satker->insert($data);
+        if($this->M_Satker->insert($data)){
+            redirect('satker');   
+        }else{
+            redirect('satker');
+        }        
     }
     
     public function update($id){
@@ -56,7 +60,11 @@ class C_SatuanKerja extends CI_Controller{
         'stk_telepon'=> $this->input->post('stk_telepon',TRUE),
         'stk_kode'=> $this->input->post('stk_kode',TRUE)
         );
-        $this->M_Satker->update($msuk->id_satker,$data);
+        if($this->M_Satker->update($msuk->id_satker,$data)){
+            redirect('satker');
+        }else{
+            redirect('satker');
+        }
     }
     
     public function delete($id){

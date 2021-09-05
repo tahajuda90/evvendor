@@ -106,7 +106,7 @@ class C_Integrasi extends CI_Controller{
             } else{
                 $data['title'] = 'Penyedia Tidak Ditemukan';
                 $data['body'] = 'Pastikan Penyedia Terdapat Pada Sistem LPSE';
-                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Rekanan/create').'" type="button">Buat Paket</a>';
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('rekanan/create').'" type="button">Buat Paket</a>';
             }
         }else{
             $data['title'] = 'Data Tidak Terhubung';
@@ -138,7 +138,7 @@ class C_Integrasi extends CI_Controller{
                 $data['title'] = $rkn->rkn_nama;
                 $data['body'] = '<b>Bentuk Usaha :</b> ' . $rkn->btu_nama
                         . '<br><b>NPWP :</b> ' . $rkn->rkn_npwp . '<br>' . $rkn->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rkn->kbp_nama;
-                $data['button'] = '<a class="btn btn-primary" href="' . base_url('C_Integrasi/penyedia_save/') . $rkn->rkn_id . '" type="button">Tarik</a>';
+                $data['button'] = '<a class="btn btn-primary" href="' . base_url('C_Integrasi/penyedia_save/').$rkn->rkn_id.'" type="button">Tarik</a>';
             }else if(!empty($rknof) && $this->input->get('kontrak')){
                 
                 $data['title'] = $rknof[0]->rkn_nama;
@@ -149,7 +149,7 @@ class C_Integrasi extends CI_Controller{
                 $data['title'] = $rknof[0]->rkn_nama;
                 $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof[0]->btu_nama
                         . '<br><b>NPWP :</b> ' . $rknof[0]->rkn_npwp . '<br>' . $rknof[0]->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof[0]->kbp;
-                $data['button'] = '<a class="btn btn-primary" type="button">Integrasi</a>';
+                $data['button'] = '<a class="btn btn-primary" type="button" href="' . base_url('C_Integrasi/penyedia_save/').$rknof[0]->rkn_npwp. '">Integrasi</a>';
             }else if(empty($rkn) && !empty($rknof)){
                 $data['title'] = $rknof[0]->rkn_nama;
                 $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof[0]->btu_nama
@@ -169,7 +169,11 @@ class C_Integrasi extends CI_Controller{
     }
     
     public function sinkron_penyedia($npwp){
-        
+         if($this->M_IRekanan->sinkron($npwp)){
+            redirect($this->sess['last_url']);
+        }else{
+            redirect($this->sess['last_url']);
+        };
     }
 }
 

@@ -10,7 +10,7 @@
      foreach ($bentuk as $btu){ ?>
         <tr>
             <td><?=$btu->btu_nama?></td>
-            <td><a type="button" href="<?=$btu->id_btu?>" class="btn btn-warning btn-sm">
+            <td><a type="button" href="<?=base_url('bntkusaha/update/').$btu->id_btu?>" class="btn btn-warning btn-sm">
                                                  Edit
                                               </a></td>
         </tr>         

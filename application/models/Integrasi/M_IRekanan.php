@@ -58,6 +58,10 @@ class M_IRekanan extends MY_Integrate{
             'rkn_email'=> $rkn->rkn_email,
             'kbp'=> $rkn->kbp_nama
         );
-        return $this->M_Rekanan->update($rknl->id_rekanan,$data);
+        if(isset($rkn)){
+            return $this->M_Rekanan->update($rknl->id_rekanan,$data);
+        }else{
+            return false;
+        }        
     }
 }

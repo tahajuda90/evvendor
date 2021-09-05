@@ -34,7 +34,7 @@
                 if(isset($kntr->rkn_id)&&!isset($kntr->id_rekanan)){
                     echo '<a type="button" id="tarik" data-toggle="modal" class="btn btn-primary btn-sm" href="'. base_url('C_Integrasi/penyedia?kontrak='.$kntr->id_kontrak.'&rkn_id='.$kntr->rkn_id).'"><i class="fa fa-download"></i> Tarik Data</a>';
                 }else if(!isset($kntr->id_rekanan)){
-                    echo '<form method="GET" id="subnpwp" action="'.base_url('C_Integrasi/penyedia').'"><div class="input-group"><input class="form-control form-control-sm" id="npwp" name="npwp" type="text" placeholder="NPWP Penyedia">
+                    echo '<form method="GET" id="subnpwp" action="'.base_url('C_Integrasi/penyedia?kontrak='.$kntr->id_kontrak).'"><div class="input-group"><input class="form-control form-control-sm" id="npwp" name="npwp" type="text" placeholder="NPWP Penyedia">
                 <button type="button" id="tarik2" class="btn btn-primary btn-sm input-group-append">
                     <i class="fa fa-download"></i> Tarik Data
                 </button></form>';
@@ -46,6 +46,9 @@
                 <td><?= rupiah($kntr->nilai_kontrak)?></td>
                 <td>Mulai : <?= fdateindo($kntr->kontrak_mulai) ?><br>
                 Akhir : <?= fdateindo($kntr->kontrak_mulai) ?> <br>
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-warning" href="<?= base_url('paket/kontrak/update/'.$kntr->id_kontrak)?>">Edit</a>
                 </td>
             </tr>
             

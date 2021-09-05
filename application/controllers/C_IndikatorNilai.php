@@ -22,7 +22,7 @@ class C_IndikatorNilai extends CI_Controller{
         $data['indikator'] = $this->M_IndikatorN->get_cond(array($this->M_GroupN->primary=>$idg));
         $data['action'] = base_url('C_IndikatorNilai/create_action_ind');
         $data['id_indikator']= set_value('id_indikator');
-        $data['id_group']= set_value('id_group');
+        $data['id_group']= $data['group']->id_group;
         $data['nama_indikator']= set_value('nama_indikator');
         $data['button'] = 'Tambah';
         $data['page'] = 'page/IndikatorPenilaian';
@@ -33,7 +33,11 @@ class C_IndikatorNilai extends CI_Controller{
         $data = array(
         'nama_group'=> $this->input->post('nama_group',TRUE)
         );
-        $this->M_GroupN->insert($data);
+        if($this->M_GroupN->insert($data)){
+            redirect('group');
+        }else{
+            redirect('group');
+        }
     }
     
     public function create_action_ind(){
@@ -41,7 +45,11 @@ class C_IndikatorNilai extends CI_Controller{
             'id_group'=> $this->input->post('id_group',TRUE),
             'nama_indikator'=> $this->input->post('nama_indikator',TRUE)
         );
-        $this->M_IndikatorN->insert($data);
+        if($this->M_IndikatorN->insert($data)){
+            redirect('group/indikator/'.$data['id_group']);
+        }else{
+            redirect('group/indikator/'.$data['id_group']);
+        }
     }
     
     public function update($idg){
@@ -76,8 +84,9 @@ class C_IndikatorNilai extends CI_Controller{
             'nama_group'=> $this->input->post('nama_group',TRUE)
             );
             $this->M_GroupN->update($group->id_group,$data);
+            redirect('group');
         }else{
-            
+            redirect('group');
         }        
     }
     
@@ -88,9 +97,10 @@ class C_IndikatorNilai extends CI_Controller{
             'id_group'=> $this->input->post('id_group',TRUE),
             'nama_indikator'=> $this->input->post('nama_indikator',TRUE)
         );
-        $this->M_IndikatorN->update($idktr->id_indikator,$data);
+            $this->M_IndikatorN->update($idktr->id_indikator,$data);
+            redirect('group/indikator/'.$idktr->id_group);
         }else{
-            
+            redirect('group/indikator/'.$idktr->id_group);
         }
     }
     
@@ -98,17 +108,19 @@ class C_IndikatorNilai extends CI_Controller{
         $group = $this->M_GroupN->get_by_id($idg);
         if(isset($group)){
             $this->M_GroupN->delete($group->id_group);
+            redirect('group');
         }else{
-            
+            redirect('group'); 
         }        
     }
     
     public function delete_ind($idi){
         $idktr = $this->M_IndikatorN->get_by_id($idi);
         if(isset($idktr)){
-            $this->M_IndikatorN->delete($idktr->id_indikator);        
+            $this->M_IndikatorN->delete($idktr->id_indikator);
+            redirect('group/indikator/'.$idktr->id_group);
         }else{
-            
+            redirect('group/indikator/'.$idktr->id_group);
         }
     }
     

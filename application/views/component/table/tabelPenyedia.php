@@ -23,7 +23,9 @@
             <b>Asal Kota/Kabupaten :</b> <?=$rkn->kbp?>
             </td>
             <td><?=$rkn->rkn_telepon?><br> Email : <?=$rkn->rkn_email?></td>
-            <td></td>
+            <td><a class="btn btn-sm btn-warning" type="button" href="<?=base_url('rekanan/update/'.$rkn->id_rekanan)?>">Edit</a>
+            <?= ($rkn->child == 0 ? '<a class="btn btn-sm btn-danger" href="'. base_url('C_Rekanan/delete/'.$rkn->id_rekanan).'" type="button">Delete</a>':'') ?>
+            </td>
         </tr>        
         <?php        
             }

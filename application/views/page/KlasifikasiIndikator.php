@@ -5,7 +5,7 @@
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><a href="#"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="breadcrumb-item"><a href="#">Kualifikasi Pekerjaan</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('kualifikasi')?>">Kualifikasi Pekerjaan</a></li>
         <li class="breadcrumb-item active">Indikator Penilaian</li>
     </ul>
 </div>
@@ -15,8 +15,9 @@
         <div class="tile">
             <h3 class="tile-title">Daftar Indikator Kualifikasi</h3>
             <div class="tile-body">
-                <form method="post" action="<?= base_url('C_Klasifikasi/update_action_ind')?>">                      
-                    <a class="btn btn-success btn-sm" href="<?= base_url('C_IndikatorNilai/bridging?kualifikasi=').$klasifikasi->id_kualifikasi?>" type="button"><i class="fa fa-plus"> Indikator</i></a>
+                <form method="post" action="<?= base_url('C_Klasifikasi/update_action_ind')?>">
+                    <input type="hidden" value="<?=$klasifikasi->id_kualifikasi?>" name="id_kualifikasi">
+                    <a class="btn btn-success btn-sm" href="<?= base_url('kualifikasi/penilaian?kualifikasi=').$klasifikasi->id_kualifikasi?>" type="button"><i class="fa fa-plus"> Indikator</i></a>
                 <?= $indikator != null ? '<button class="btn btn-primary btn-sm" type="submit">update</button>' : ''?>
                 <table class="table table-bordered">
                     <thead>

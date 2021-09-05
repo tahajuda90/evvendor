@@ -65,7 +65,11 @@ class C_PaketKontrak extends CI_Controller{
             'pkt_hps'=> $this->input->post('pkt_hps',TRUE),
             'tahun'=> $this->input->post('tahun',TRUE)
         );
-        $this->M_Paket->insert($data,array('lls_id'=>$data['lls_id']));
+        if($this->M_Paket->insert($data,array('lls_id'=>$data['lls_id']))){
+            redirect('paket');
+        }else{
+            redirect('paket');
+        }
     }
     
     public function create_action_ktr(){
@@ -77,7 +81,11 @@ class C_PaketKontrak extends CI_Controller{
             'kontrak_mulai'=> fdatetimetodb($this->input->post('kontrak_mulai',TRUE)),
             'kontrak_akhir'=> fdatetimetodb($this->input->post('kontrak_akhir',TRUE))
         );
-        $this->M_Kontrak->insert($data,array('id_paket'=>$data['id_paket']));
+        if($this->M_Kontrak->insert($data,array('id_paket'=>$data['id_paket']))){
+            redirect('paket/kontrak/'.$data['id_paket']);
+        }else{
+            redirect('paket/kontrak/'.$data['id_paket']);
+        };
     }
     
     public function update($id){
@@ -126,7 +134,11 @@ class C_PaketKontrak extends CI_Controller{
             'pkt_hps'=> $this->input->post('pkt_hps',TRUE),
             'tahun'=> $this->input->post('tahun',TRUE)
         );
-        $this->M_Paket->update($msuk->id_paket,$data);
+        if($this->M_Paket->update($msuk->id_paket,$data)){
+            redirect('paket');
+        }else{
+            redirect('paket');
+        };
     }
     
     public function update_action_ktr(){
@@ -139,7 +151,11 @@ class C_PaketKontrak extends CI_Controller{
             'kontrak_mulai'=> fdatetimetodb($this->input->post('kontrak_mulai',TRUE)),
             'kontrak_akhir'=> fdatetimetodb($this->input->post('kontrak_akhir',TRUE))
         );
-        $this->M_Kontrak->update($msuk->id_kontrak,$data);
+        if($this->M_Kontrak->update($msuk->id_kontrak,$data)){
+            redirect('paket/kontrak/'.$data['id_paket']);
+        }else{
+            redirect('paket/kontrak/'.$data['id_paket']);
+        }
     }
     
     public function delete(){}

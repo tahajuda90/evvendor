@@ -44,7 +44,11 @@ class C_Rekanan extends CI_Controller{
             'rkn_email'=> $this->input->post('rkn_email',TRUE),
             'kbp'=> $this->input->post('kbp',TRUE)
         );
-        $this->M_Rekanan->insert($data,array('rkn_npwp'=>$data['rkn_npwp']));
+        if($this->M_Rekanan->insert($data,array('rkn_npwp'=>$data['rkn_npwp']))){
+            redirect('rekanan');
+        }else{
+            redirect('rekanan');
+        }
     }
     
     public function update($id){

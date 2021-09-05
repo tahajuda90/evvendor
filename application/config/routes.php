@@ -14,7 +14,7 @@ $route['kualifikasi'] = 'C_Klasifikasi/index';
 $route['kualifikasi/indikator/(:any)'] = 'C_Klasifikasi/index_ind/$1';
 $route['kualifikasi/create'] = 'C_Klasifikasi/create';
 $route['kualifikasi/update/(:any)'] = 'C_Klasifikasi/update/$1';
-$route['kualifikasi/penilaian'] = 'C_Indikator/bridging';
+$route['kualifikasi/penilaian'] = 'C_IndikatorNilai/bridging';
 
 $route['satker'] = 'C_SatuanKerja/index';
 $route['satker/create'] = 'C_SatuanKerja/create';

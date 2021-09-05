@@ -35,9 +35,9 @@
                   <tr>
                           <td><?=$no?></td>
                           <td><?=$gr->nama_group?></td>
-                          <td><a class="btn btn-primary btn-sm" href="<?=$gr->id_group?>" type="button">Indikator</a> 
-                              <a class="btn btn-warning btn-sm" href="<?=$gr->id_group?>" type="button">Update</a>
-                              <?= $gr->child == 0 ? "<a class='btn btn-danger btn-sm' href='".$gr->id_group."' type='button'>Delete</a>" : "" ?></td>
+                          <td><a class="btn btn-primary btn-sm" href="<?= base_url('group/indikator/'.$gr->id_group)?>" type="button">Indikator</a> 
+                              <a class="btn btn-warning btn-sm" href="<?= base_url('group/update/'.$gr->id_group)?>" type="button">Update</a>
+                              <?= $gr->child == 0 ? "<a class='btn btn-danger btn-sm' href='".base_url('C_IndikatorNilai/delete/'.$gr->id_group)."' type='button'>Delete</a>" : "" ?></td>
                       </tr>
                  <?php
      $no++;} }else{

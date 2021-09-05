@@ -14,10 +14,10 @@
         <div class="tile">
             <?= !isset($button) ?
             '<div class="row pull-right">
-                <a type="button" class="btn btn-primary btn-sm">
+                <a type="button" class="btn btn-primary btn-sm" href="'. base_url('satker/integrasi').'">
                     <i class="fa fa-download"></i> Tarik Data
                 </a>
-                <a type="button" class="btn btn-warning btn-sm">
+                <a type="button" class="btn btn-warning btn-sm" href="'. base_url('satker/create').'">
                     <i class="fa fa-plus"></i> Buat Data
                 </a>
             </div>' : '' ?>

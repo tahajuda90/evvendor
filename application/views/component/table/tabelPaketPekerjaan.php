@@ -27,19 +27,19 @@
                                 </td>
                                 <td><?php
                                 if(($pkt->child == 0)&&($pkt->is_nontender == 1)||($pkt->pkt_id == null)){
-                                    echo '<a type="button" class="btn btn-sm btn-primary">Buat Kontrak</a>';
-                                    echo '<br> <a type="button" class="btn btn-sm btn-danger">Delete</a>';
+                                    echo '<a type="button" class="btn btn-sm btn-primary" href="'. base_url('paket/kontrak/create/'.$pkt->id_paket).'">Buat Kontrak</a>';
+                                    echo '<br> <a type="button" class="btn btn-sm btn-danger" href="'. base_url('C_PaketKontrak/delete/'.$pkt->id_paket).'">Delete</a>';
                                 }
                                 else if(($pkt->child == 0)&&($pkt->pkt_id != null)&&($pkt->is_nontender == 0)){
                                     echo '<a type="button" class="btn btn-sm btn-primary" href="'. base_url('C_Integrasi/kontrak_save/').$pkt->lls_id.'">Tarik Kontrak</a>';
-                                    echo '<br> <a type="button" class="btn btn-sm btn-danger">Delete</a>';
+                                    echo '<br> <a type="button" class="btn btn-sm btn-danger" href="'. base_url('C_PaketKontrak/delete/'.$pkt->id_paket).'">Delete</a>';
                                 }else if(($pkt->child > 0)){
-                                    echo '<a type="button" class="btn btn-sm btn-primary">Detail Paket</a>';
+                                    echo '<a type="button" class="btn btn-sm btn-primary" href="'. base_url('paket/kontrak/'.$pkt->id_paket).'">Detail Paket</a>';
                                 }else{
                                     echo '<a type="button" class="btn btn-sm btn-primary">Detail</a>';
                                 }
                                 ?>
-                                <br><a type="button" class="btn btn-sm btn-warning">Edit</a>
+                                    <br><a type="button" class="btn btn-sm btn-warning" href="<?= base_url('paket/update/'.$pkt->id_paket)?>">Edit</a>
                                 </td>
                             </tr>
                     

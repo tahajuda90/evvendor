@@ -4,8 +4,8 @@
         <p>Daftar parameter indikator penilaian vendor</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="breadcrumb-item"><a href="#">Group Penilaian</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url()?>"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('group')?>">Group Penilaian</a></li>
         <li class="breadcrumb-item active">Indikator Penilaian</li>
     </ul>
 </div>
@@ -36,8 +36,8 @@
                         <tr>
                           <td><?=$no?></td>
                           <td><?=$idktr->nama_indikator?></td>
-                          <td><a class="btn btn-warning btn-sm" href="<?=$idktr->id_indikator?>" type="button">Update</a>
-                              <?= $idktr->child == 0 ? "<a class='btn btn-danger btn-sm' href='".$idktr->id_indikator."' type='button'>Delete</a>" : "" ?></td>
+                          <td><a class="btn btn-warning btn-sm" href="<?= base_url('group/indikator/update/'.$idktr->id_indikator)?>" type="button">Update</a>
+                              <?= $idktr->child == 0 ? "<a class='btn btn-danger btn-sm' href='".base_url('C_IndikatorNilai/delete_ind/'.$idktr->id_indikator)."' type='button'>Delete</a>" : "" ?></td>
                       </tr>
                         <?php
      $no++;} }else{

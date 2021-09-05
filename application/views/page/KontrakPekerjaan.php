@@ -5,7 +5,7 @@
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><a href="#"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="breadcrumb-item">Paket Pekerjaan</li>
+        <li class="breadcrumb-item"><a href="<?= base_url('paket')?>">Paket Pekerjaan</a></li>
         <li class="breadcrumb-item active">Kontrak Pekerjaan</li>
     </ul>
 </div>

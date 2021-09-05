@@ -19,11 +19,11 @@
                                 <td>
                                     <?php
                                     if(property_exists($str, "id_satker")){
-                                        echo '<a type="button" href="'.$str->id_satker.'" class="btn btn-warning btn-sm">
+                                        echo '<a type="button" href="'.base_url('satker/update/'.$str->id_satker).'" class="btn btn-warning btn-sm">
                                                  Edit
                                               </a>';
                                     }else if(property_exists($str, "id_satker") && ($str->stk_id != null) && ($str->child<0)){
-                                        echo '<a type="button" href="'.$str->id_satker.'" class="btn btn-danger btn-sm">
+                                        echo '<a type="button" href="'.base_url('C_SatuanKerja/delete/'.$str->id_satker).'" class="btn btn-danger btn-sm">
                                                  Delete
                                               </a>';
                                     }

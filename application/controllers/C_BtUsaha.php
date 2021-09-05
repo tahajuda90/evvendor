@@ -30,8 +30,9 @@ class C_BtUsaha extends CI_Controller{
             'btu_nama'=> $this->input->post('btu_nama',TRUE)
             );
             $this->M_BentukU->update($btu->id_btu,$data);
+            redirect('bntkusaha');
         }else{
-            
+            redirect('bntkusaha');
         }        
 
     }

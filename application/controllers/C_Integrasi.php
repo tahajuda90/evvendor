@@ -5,7 +5,8 @@ class C_Integrasi extends CI_Controller{
     var $sess =null;
     public function __construct(){
         parent::__construct();
-        $this->load->model(array('Integrasi/M_ISatker','Integrasi/M_IBentukU','Integrasi/M_IPaket','Integrasi/M_IKontrak','Integrasi/M_IRekanan'));
+        $this->load->model(array('Integrasi/M_ISatker','Integrasi/M_IBentukU','Integrasi/M_IPaket','Integrasi/M_IKontrak','Integrasi/M_IRekanan',
+            'Integrasi/M_IRius'));
         $this->sess = $this->session->get_userdata();
     }
     
@@ -73,15 +74,15 @@ class C_Integrasi extends CI_Controller{
         }
         //redirect() ke C_PaketKontrak/index dengan session message didalam if;
     }
-    public function kontrak_save($lls_id){
+    public function kontrak_save($id_pkt){
         if($this->M_IKontrak->is_online()){
-            if($this->M_IKontrak->save($lls_id)){
+            if($this->M_IKontrak->save($id_pkt)){
                 redirect($this->sess['last_url']);
             }else{
-                redirect($this->sess['last_url']);
+                redirect(base_url('paket/kontrak/create/'.$id_pkt));
             }
         }else{
-            redirect($this->sess['last_url']);
+            redirect(base_url('paket/kontrak/create/'.$id_pkt));
         }
         //redirect() ke C_PaketKontrak/index dengan session message didalam if;
     }
@@ -149,7 +150,7 @@ class C_Integrasi extends CI_Controller{
                 $data['title'] = $rknof[0]->rkn_nama;
                 $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof[0]->btu_nama
                         . '<br><b>NPWP :</b> ' . $rknof[0]->rkn_npwp . '<br>' . $rknof[0]->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rknof[0]->kbp;
-                $data['button'] = '<a class="btn btn-primary" type="button" href="' . base_url('C_Integrasi/penyedia_save/').$rknof[0]->rkn_npwp. '">Integrasi</a>';
+                $data['button'] = '<a class="btn btn-primary" type="button" href="' . base_url('C_Integrasi/sinkron_penyedia/').$rknof[0]->rkn_npwp. '">Integrasi</a>';
             }else if(empty($rkn) && !empty($rknof)){
                 $data['title'] = $rknof[0]->rkn_nama;
                 $data['body'] = '<b>Bentuk Usaha :</b> ' . $rknof[0]->btu_nama
@@ -158,12 +159,12 @@ class C_Integrasi extends CI_Controller{
             }else{
                 $data['title'] = 'Penyedia Tidak Ditemukan';
                 $data['body'] = 'Pastikan Penyedia Terdapat Pada Sistem LPSE';
-                $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Rekanan/create').'" type="button">Buat Paket</a>';
+                $data['button'] = '<a class="btn btn-primary" href="'.base_url('rekanan/create').'" type="button">Buat Paket</a>';
             }
         }else{
             $data['title'] = 'Data Tidak Terhubung';
             $data['body'] = 'Data LPSE Tidak Terhubung Pada Sistem';
-            $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Rekanan/create').'" type="button">Buat Paket</a>';
+            $data['button'] = '<a class="btn btn-primary" href="'.base_url('rekanan/create').'" type="button">Buat Paket</a>';
         }
         $this->load->view('component/modal',$data);
     }
@@ -174,6 +175,19 @@ class C_Integrasi extends CI_Controller{
         }else{
             redirect($this->sess['last_url']);
         };
+    }
+    
+    public function ius_penyedia($rkn_id){
+        $rkn = $this->M_IRekanan->status($rkn_id)['lokal'];
+        if($this->M_IRius->is_online()){
+            if($this->M_IRius->save($rkn_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect('rekanan/detail/ius/'.$rkn[0]->id_penyedia);
+            }
+        }else{
+            redirect('rekanan/detail/ius/'.$rkn[0]->id_penyedia);
+        }
     }
 }
 

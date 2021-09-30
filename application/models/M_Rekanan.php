@@ -18,6 +18,13 @@ class M_Rekanan extends MY_Model{
         return parent::get_all();
     }
     
+    public function get_by_id($id) {
+        $this->db->select($this->table.'.*,bentuk_usaha.btu_nama');
+        $this->db->join($this->M_BentukU->table,'rekanan.id_btu = bentuk_usaha.id_btu','left');
+        return parent::get_by_id($id);
+    }
+
+
     public function get_cond($cond) {
         $this->db->select($this->table.'.*,bentuk_usaha.btu_nama');
         $this->db->join($this->M_BentukU->table,'rekanan.id_btu = bentuk_usaha.id_btu','left');

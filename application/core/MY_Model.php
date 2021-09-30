@@ -90,6 +90,11 @@ class MY_Integrate extends CI_Model{
         return $this->db->get($this->table)->row();
     }
     
+    function cond($col,$id){
+        $this->db->where($col, $id);
+        return $this->db->get($this->table)->result();
+    }
+    
     function is_online(){
         if($this->db->get($this->table)){
             return true;

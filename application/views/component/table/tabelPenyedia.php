@@ -24,6 +24,7 @@
             </td>
             <td><?=$rkn->rkn_telepon?><br> Email : <?=$rkn->rkn_email?></td>
             <td><a class="btn btn-sm btn-warning" type="button" href="<?=base_url('rekanan/update/'.$rkn->id_rekanan)?>">Edit</a>
+                <a class="btn btn-sm btn-primary" type="button" href="<?= base_url('rekanan/detail/'.$rkn->id_rekanan)?>">Detail</a>
             <?= ($rkn->child == 0 ? '<a class="btn btn-sm btn-danger" href="'. base_url('C_Rekanan/delete/'.$rkn->id_rekanan).'" type="button">Delete</a>':'') ?>
             </td>
         </tr>        

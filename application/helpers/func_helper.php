@@ -111,7 +111,7 @@
             
             $menu['skor']['menu']='Penilaian';
             $menu['skor']['ikon'] = '<i class="app-menu__icon fa fa-bar-chart"></i>';
-            $menu['skor']['link']='';
+            $menu['skor']['link']='penilaian';
             
             return $menu;
         }

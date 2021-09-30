@@ -34,3 +34,11 @@ $route['bntkusaha/update/(:any)'] = 'C_BtUsaha/update/$1';
 $route['rekanan'] = 'C_Rekanan/index';
 $route['rekanan/create'] = 'C_Rekanan/create';
 $route['rekanan/update/(:any)'] = 'C_Rekanan/update/$1';
+$route['rekanan/detail/(:any)'] = 'C_RknDetail/Rekanan/$1';
+$route['rekanan/detail/ius/(:any)'] = 'C_RknDetail/create_ius/$1';
+$route['rekanan/detail/akt/(:any)'] = 'C_RknDetail/create_akt/$1';
+
+
+$route['penilaian'] = 'C_Skoring/index';
+$route['penilaian/create/(:any)'] = 'C_Skoring/skorcreate/$1';
+$route['penilaian/update/(:any)'] = 'C_Skoring/skorupdate/$1';

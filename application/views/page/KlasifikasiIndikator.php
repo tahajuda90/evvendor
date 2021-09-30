@@ -12,6 +12,11 @@
 
 <div class="row">
     <div class="col-md-12">
+        <div class="alert alert-dismissible alert-warning">
+            <button class="close" type="button" data-dismiss="alert">×</button>
+            <h4>Warning!</h4>
+            <p>Nilai bobot dibawah ini harap diisi dengan nilai pada rentang <b>1 s/d 10</b></p>
+        </div>
         <div class="tile">
             <h3 class="tile-title">Daftar Indikator Kualifikasi</h3>
             <div class="tile-body">
@@ -19,7 +24,7 @@
                     <input type="hidden" value="<?=$klasifikasi->id_kualifikasi?>" name="id_kualifikasi">
                     <a class="btn btn-success btn-sm" href="<?= base_url('kualifikasi/penilaian?kualifikasi=').$klasifikasi->id_kualifikasi?>" type="button"><i class="fa fa-plus"> Indikator</i></a>
                 <?= $indikator != null ? '<button class="btn btn-primary btn-sm" type="submit">update</button>' : ''?>
-                <table class="table table-bordered">
+                    <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>No</th>

@@ -37,6 +37,12 @@ $route['rekanan/update/(:any)'] = 'C_Rekanan/update/$1';
 $route['rekanan/detail/(:any)'] = 'C_RknDetail/Rekanan/$1';
 $route['rekanan/detail/ius/(:any)'] = 'C_RknDetail/create_ius/$1';
 $route['rekanan/detail/akt/(:any)'] = 'C_RknDetail/create_akt/$1';
+$route['rekanan/detail/pjk/(:any)'] = 'C_RknDetail/create_pjk/$1';
+$route['rekanan/detail/pml/(:any)'] = 'C_RknDetail/create_pml/$1';
+$route['rekanan/detail/pgr/(:any)'] = 'C_RknDetail/create_pgr/$1';
+$route['rekanan/detail/pgl/(:any)'] = 'C_RknDetail/create_pgl/$1';
+$route['rekanan/detail/ahl/(:any)'] = 'C_RknDetail/create_ahl/$1';
+$route['rekanan/detail/prl/(:any)'] = 'C_RknDetail/create_prl/$1';
 
 
 $route['penilaian'] = 'C_Skoring/index';

@@ -6,7 +6,7 @@ class C_Integrasi extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model(array('Integrasi/M_ISatker','Integrasi/M_IBentukU','Integrasi/M_IPaket','Integrasi/M_IKontrak','Integrasi/M_IRekanan',
-            'Integrasi/M_IRius'));
+            'Integrasi/M_IRius','Integrasi/M_IRakta','Integrasi/M_IRpjk','Integrasi/M_IRpml','Integrasi/M_IRpgr','Integrasi/M_IRpgl','Integrasi/M_IRahli','Integrasi/M_IRprl'));
         $this->sess = $this->session->get_userdata();
     }
     
@@ -178,7 +178,7 @@ class C_Integrasi extends CI_Controller{
     }
     
     public function ius_penyedia($rkn_id){
-        $rkn = $this->M_IRekanan->status($rkn_id)['lokal'];
+        $rkn = $this->M_IRekanan->status(array('kolom'=>'rkn_id','value'=>$rkn_id))['lokal'];
         if($this->M_IRius->is_online()){
             if($this->M_IRius->save($rkn_id)){
                 redirect($this->sess['last_url']);
@@ -187,6 +187,97 @@ class C_Integrasi extends CI_Controller{
             }
         }else{
             redirect('rekanan/detail/ius/'.$rkn[0]->id_penyedia);
+        }
+    }
+    
+    public function akt_penyedia($rkn_id){
+        $rkn = $this->M_IRekanan->status(array('kolom'=>'rkn_id','value'=>$rkn_id))['lokal'];
+        if($this->M_IRakta->is_online()){
+            if($this->M_IRakta->save($rkn_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect('rekanan/detail/akt/'.$rkn[0]->id_penyedia);
+            }
+        }else{
+            redirect('rekanan/detail/akt/'.$rkn[0]->id_penyedia);
+        }
+    }
+    
+    public function pjk_penyedia($rkn_id){
+        $rkn = $this->M_IRekanan->status(array('kolom'=>'rkn_id','value'=>$rkn_id))['lokal'];
+        if($this->M_IRpjk->is_online()){
+            if($this->M_IRpjk->save($rkn_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect('rekanan/detail/pjk/'.$rkn[0]->id_penyedia);
+            }
+        }else{
+            redirect('rekanan/detail/pjk/'.$rkn[0]->id_penyedia);
+        }
+    }
+    
+    public function pml_penyedia($rkn_id){
+        $rkn = $this->M_IRekanan->status(array('kolom'=>'rkn_id','value'=>$rkn_id))['lokal'];
+        if($this->M_IRpml->is_online()){
+            if($this->M_IRpml->save($rkn_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect('rekanan/detail/pml/'.$rkn[0]->id_penyedia);
+            }
+        }else{
+            redirect('rekanan/detail/pml/'.$rkn[0]->id_penyedia);
+        }
+    }
+    
+    public function pgr_penyedia($rkn_id){
+        $rkn = $this->M_IRekanan->status(array('kolom'=>'rkn_id','value'=>$rkn_id))['lokal'];
+        if($this->M_IRpgr->is_online()){
+            if($this->M_IRpgr->save($rkn_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect('rekanan/detail/pgr/'.$rkn[0]->id_penyedia);
+            }
+        }else{
+            redirect('rekanan/detail/pgr/'.$rkn[0]->id_penyedia);
+        }
+    }
+    
+    public function pgl_penyedia($rkn_id){
+        $rkn = $this->M_IRekanan->status(array('kolom'=>'rkn_id','value'=>$rkn_id))['lokal'];
+        if($this->M_IRpgl->is_online()){
+            if($this->M_IRpgl->save($rkn_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect('rekanan/detail/pgl/'.$rkn[0]->id_penyedia);
+            }
+        }else{
+            redirect('rekanan/detail/pgl/'.$rkn[0]->id_penyedia);
+        }
+    }
+    
+    public function ahl_penyedia($rkn_id){
+        $rkn = $this->M_IRekanan->status(array('kolom'=>'rkn_id','value'=>$rkn_id))['lokal'];
+        if($this->M_IRahli->is_online()){
+            if($this->M_IRahli->save($rkn_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect('rekanan/detail/ahl/'.$rkn[0]->id_penyedia);
+            }
+        }else{
+            redirect('rekanan/detail/ahl/'.$rkn[0]->id_penyedia);
+        }
+    }
+    
+    public function prl_penyedia($rkn_id){
+        $rkn = $this->M_IRekanan->status(array('kolom'=>'rkn_id','value'=>$rkn_id))['lokal'];
+        if($this->M_IRprl->is_online()){
+            if($this->M_IRprl->save($rkn_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect('rekanan/detail/prl/'.$rkn[0]->id_penyedia);
+            }
+        }else{
+            redirect('rekanan/detail/prl/'.$rkn[0]->id_penyedia);
         }
     }
 }

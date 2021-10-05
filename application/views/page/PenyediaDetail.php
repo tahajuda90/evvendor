@@ -54,25 +54,67 @@
                             $this->load->view('component/table/tabelIjinUsaha'); ?>
                         </div>
                         <div class="tab-pane fade" id="akt">
-                            
+                            <?php 
+                            if(isset($rekanan->rkn_id)){
+                                echo '<a type="button" class="btn btn-sm btn-primary pull-right" href="'. base_url('C_Integrasi/akt_penyedia/'.$rekanan->rkn_id).'"><i class="fa fa-download"></i>Tarik Data</a>';
+                            }else{
+                                echo '<a type="button" class="btn btn-sm btn-warning pull-right" href="'. base_url('rekanan/detail/akt/'.$rekanan->id_penyedia).'"><i class="fa fa-plus"></i>Buat Data</a>';
+                            }
+                            $this->load->view('component/table/tabelAkta'); ?>
                         </div>
                         <div class="tab-pane fade" id="pjk">
-                            
+                            <?php 
+                            if(isset($rekanan->rkn_id)){
+                                echo '<a type="button" class="btn btn-sm btn-primary pull-right" href="'. base_url('C_Integrasi/pjk_penyedia/'.$rekanan->rkn_id).'"><i class="fa fa-download"></i>Tarik Data</a>';
+                            }else{
+                                echo '<a type="button" class="btn btn-sm btn-warning pull-right" href="'. base_url('rekanan/detail/pjk/'.$rekanan->id_penyedia).'"><i class="fa fa-plus"></i>Buat Data</a>';
+                            }
+                            $this->load->view('component/table/tabelPajak'); ?>
                         </div>
                         <div class="tab-pane fade" id="pml">
-                            
+                            <?php 
+                            if(isset($rekanan->rkn_id)){
+                                echo '<a type="button" class="btn btn-sm btn-primary pull-right" href="'. base_url('C_Integrasi/pml_penyedia/'.$rekanan->rkn_id).'"><i class="fa fa-download"></i>Tarik Data</a>';
+                            }else{
+                                echo '<a type="button" class="btn btn-sm btn-warning pull-right" href="'. base_url('rekanan/detail/pml/'.$rekanan->id_penyedia).'"><i class="fa fa-plus"></i>Buat Data</a>';
+                            }
+                            $this->load->view('component/table/tabelPemilik'); ?>
                         </div>
                         <div class="tab-pane fade" id="pgr">
-                            
+                            <?php 
+                            if(isset($rekanan->rkn_id)){
+                                echo '<a type="button" class="btn btn-sm btn-primary pull-right" href="'. base_url('C_Integrasi/pgr_penyedia/'.$rekanan->rkn_id).'"><i class="fa fa-download"></i>Tarik Data</a>';
+                            }else{
+                                echo '<a type="button" class="btn btn-sm btn-warning pull-right" href="'. base_url('rekanan/detail/pgr/'.$rekanan->id_penyedia).'"><i class="fa fa-plus"></i>Buat Data</a>';
+                            }
+                            $this->load->view('component/table/tabelPengurus'); ?>
                         </div>
                         <div class="tab-pane fade" id="pgl">
-                            
+                            <?php 
+                            if(isset($rekanan->rkn_id)){
+                                echo '<a type="button" class="btn btn-sm btn-primary pull-right" href="'. base_url('C_Integrasi/pgl_penyedia/'.$rekanan->rkn_id).'"><i class="fa fa-download"></i>Tarik Data</a>';
+                            }else{
+                                echo '<a type="button" class="btn btn-sm btn-warning pull-right" href="'. base_url('rekanan/detail/pgl/'.$rekanan->id_penyedia).'"><i class="fa fa-plus"></i>Buat Data</a>';
+                            }
+                            $this->load->view('component/table/tabelPengalaman'); ?>
                         </div>
                         <div class="tab-pane fade" id="ahl">
-                            
+                            <?php 
+                            if(isset($rekanan->rkn_id)){
+                                echo '<a type="button" class="btn btn-sm btn-primary pull-right" href="'. base_url('C_Integrasi/ahl_penyedia/'.$rekanan->rkn_id).'"><i class="fa fa-download"></i>Tarik Data</a>';
+                            }else{
+                                echo '<a type="button" class="btn btn-sm btn-warning pull-right" href="'. base_url('rekanan/detail/ahl/'.$rekanan->id_penyedia).'"><i class="fa fa-plus"></i>Buat Data</a>';
+                            }
+                            $this->load->view('component/table/tabelTenagaAhli'); ?>
                         </div>
                         <div class="tab-pane fade" id="prl">
-                            
+                             <?php 
+                            if(isset($rekanan->rkn_id)){
+                                echo '<a type="button" class="btn btn-sm btn-primary pull-right" href="'. base_url('C_Integrasi/prl_penyedia/'.$rekanan->rkn_id).'"><i class="fa fa-download"></i>Tarik Data</a>';
+                            }else{
+                                echo '<a type="button" class="btn btn-sm btn-warning pull-right" href="'. base_url('rekanan/detail/prl/'.$rekanan->id_penyedia).'"><i class="fa fa-plus"></i>Buat Data</a>';
+                            }
+                            $this->load->view('component/table/tabelPeralatan'); ?>
                         </div>
                     </div>
                 </div>

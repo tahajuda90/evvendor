@@ -10,14 +10,14 @@ class C_RknDetail extends CI_Controller{
     
     public function rekanan($id){
         $data['rekanan'] = $this->M_Rekanan->get_by_id($id);
-        $data['akta'] = $this->M_Rakta->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
+        $data['akt'] = $this->M_Rakta->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
         $data['ius'] = $this->M_Rius->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
-        $data['pemilik'] = $this->M_Rpml->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
-        $data['pengurus'] = $this->M_Rpgr->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
-        $data['pengalaman'] = $this->M_Rpgl->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
-        $data['ahli'] = $this->M_Rahli->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
-        $data['alat'] = $this->M_Rprl->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
-        $data['pajak'] = $this->M_Rpjk->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
+        $data['pml'] = $this->M_Rpml->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
+        $data['pgr'] = $this->M_Rpgr->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
+        $data['pgl'] = $this->M_Rpgl->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
+        $data['ahl'] = $this->M_Rahli->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
+        $data['prl'] = $this->M_Rprl->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
+        $data['pjk'] = $this->M_Rpjk->get_cond(array('id_rekanan'=>$data['rekanan']->id_rekanan));
         $data['page'] = 'page/PenyediaDetail';
         $this->load->view('Main_v',$data);
         $this->session->set_userdata('last_url',current_url());

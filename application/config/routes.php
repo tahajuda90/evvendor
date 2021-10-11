@@ -48,3 +48,10 @@ $route['rekanan/detail/prl/(:any)'] = 'C_RknDetail/create_prl/$1';
 $route['penilaian'] = 'C_Skoring/index';
 $route['penilaian/create/(:any)'] = 'C_Skoring/skorcreate/$1';
 $route['penilaian/update/(:any)'] = 'C_Skoring/skorupdate/$1';
+
+
+$route['user'] = 'C_User/index';
+$route['user/create'] = 'C_User/create_user';
+$route['user/update/(:any)'] = 'C_User/edit_user/$1';
+$route['user/passwd'] = 'C_User/change_password';
+$route['login'] = 'C_User/login';

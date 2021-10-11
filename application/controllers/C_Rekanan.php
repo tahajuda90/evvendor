@@ -94,7 +94,7 @@ class C_Rekanan extends CI_Controller{
         $data['body'] = '<b>Bentuk Usaha :</b> ' . $rkn->btu_nama
                         . '<br><b>NPWP :</b> ' . $rkn->rkn_npwp . '<br>' . $rkn->rkn_alamat . '<br> <b>Asal Kota/Kabupaten :</b> ' . $rkn->kbp.
                 '<br><span class="badge badge-info">Jumlah Tenaga Ahli : '.$rkn->ahli.'</span> <span class="badge badge-info">Jumlah Pengalaman : '.$rkn->pglmn.'</span> <span class="badge badge-info"> Jumlah Peralatan : '.$rkn->prlt.'</span>';
-        $data['button'] = '<a class="btn btn-primary" href="" type="button">Detail Penyedia</a>';
+        $data['button'] = '<a class="btn btn-primary" href="'. base_url('/rekanan/detail/'.$rkn->id_rekanan).'" type="button">Detail Penyedia</a>';
         $this->load->view('component/modal',$data);
     }
 }

@@ -89,10 +89,13 @@
         function load_menu(){
             $menu = [];
             
+            $menu['dashboard']['menu']='Dashboard';
+            $menu['dashboard']['ikon'] = '<i class="fa fa-dashboard"></i>';
+            $menu['dashboard']['link'] = 'home';
+            
             $menu['user']['menu']='Manajemen User';
             $menu['user']['ikon'] = '<i class="app-menu__icon fa fa-user-o"></i>';
             $menu['user']['sub']['user'] = 'User';
-            $menu['user']['sub']['ppk'] = 'User PPK';
             
             $menu['penilaian']['menu']='Indikator Penilaian';
             $menu['penilaian']['ikon'] = '<i class="app-menu__icon fa fa-tasks"></i>';

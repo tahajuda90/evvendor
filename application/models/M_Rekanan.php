@@ -32,11 +32,13 @@ class M_Rekanan extends MY_Model{
     }
     
     public function detail($id) {
-        $this->db->select($this->table.'.*,bentuk_usaha.btu_nama,COUNT(rekanan_ahli.id_ahli) as ahli,count(rekanan_pengalaman.id_pengalaman) as pglmn,count(rekanan_peralatan.id_peralatan) as prlt');
-        $this->db->join($this->M_BentukU->table,'rekanan.id_btu = bentuk_usaha.id_btu','left');
-        $this->db->join($this->M_Rahli->table,$this->M_Rahli->table.'.'.$this->primary.' = '.$this->table.'.'.$this->primary,'left');
-        $this->db->join($this->M_Rpgl->table,$this->M_Rpgl->table.'.'.$this->primary.' = '.$this->table.'.'.$this->primary,'left');
-        $this->db->join($this->M_Rprl->table,$this->M_Rprl->table.'.'.$this->primary.' = '.$this->table.'.'.$this->primary,'left');
+        $ahl = '(SELECT ra.id_rekanan,COUNT(ra.id_ahli) as ahli from rekanan_ahli ra group by ra.id_rekanan) ahl';
+        $pgl = '(select rp.id_rekanan,COUNT(rp.id_pengalaman) as pglmn from rekanan_pengalaman rp group by rp.id_rekanan) pgl';
+        $prl = '(SELECT rp2.id_rekanan,count(rp2.id_peralatan) as prlt from rekanan_peralatan rp2 group by rp2.id_rekanan) prl';
+        $this->db->select($this->table.'.*,ahli,pglmn,prlt');
+        $this->db->join($ahl,'ahl.id_rekanan = '.$this->table.'.'.$this->primary,'left');
+        $this->db->join($pgl,'pgl.id_rekanan = '.$this->table.'.'.$this->primary,'left');
+        $this->db->join($prl,'prl.id_rekanan = '.$this->table.'.'.$this->primary,'left');
         return $this->get_by_id($id);
     }
 }

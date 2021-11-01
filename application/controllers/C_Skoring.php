@@ -74,13 +74,5 @@ class C_Skoring extends CI_Controller{
             redirect('penilaian');
         }
     }
-
-    public function assign_klas(){
-        $data['id_paket'] = $this->input->get('id_paket');
-        $data['id_kualifikasi'] = $this->input->get('id_kualifikasi');
-        if($this->M_Paket->update($this->input->get('id_paket'),array('id_kualifikasi'=>$this->input->get('id_kualifikasi')))){
-            redirect('penilaian');
-        }
-    }
 }
 

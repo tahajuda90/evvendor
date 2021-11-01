@@ -4,11 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class C_PaketKontrak extends CI_Controller{
     public function __construct() {
         parent::__construct();
-        $this->load->model(array('M_Paket','M_Satker','M_Kontrak'));
+        $this->load->model(array('M_Paket','M_KlasP','M_Satker','M_Kontrak'));
     }
     
     public function index(){
         $data['pkt'] = $this->M_Paket->get_all();
+        $data['kls'] = $this->M_KlasP->get_all();
         $data['page']='page/PaketPekerjaan';
         $this->load->view('Main_v',$data);
         $this->session->set_userdata('last_url',current_url());
@@ -158,9 +159,15 @@ class C_PaketKontrak extends CI_Controller{
         }
     }
     
-    public function delete(){}
+    public function delete($id){
+        if($this->M_Paket->delete($id)){
+            redirect('paket','refresh');
+        }else{
+            redirect('paket','refresh');
+        }
+    }
     
-    public function delete_ktr(){}
+//    public function delete_ktr(){}
     
     public function assign_penyedia(){
         $idkntr = $this->input->get('id_kontrak');
@@ -170,6 +177,14 @@ class C_PaketKontrak extends CI_Controller{
             redirect( $this->session->get_userdata()['last_url']);
         }else{
             redirect($this->session->get_userdata()['last_url']);
+        }
+    }
+
+    public function assign_klas(){
+        $data['id_paket'] = $this->input->get('id_paket');
+        $data['id_kualifikasi'] = $this->input->get('id_kualifikasi');
+        if($this->M_Paket->update($this->input->get('id_paket'),array('id_kualifikasi'=>$this->input->get('id_kualifikasi')))){
+            redirect('paket','refresh');
         }
     }
 }

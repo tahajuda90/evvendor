@@ -49,7 +49,7 @@ select * from taha_paket_nontender
             'pkt_nama'=> $pkt->pkt_nama,
             'pkt_pagu'=> $pkt->pkt_pagu,
             'pkt_hps'=> $pkt->pkt_hps,
-            'tahun'=> $pkt->tahun
+            'pkt_tgl_buat'=> $pkt->pkt_tgl_buat
         );
         return $this->M_Paket->insert($data,array('lls_id'=>$pkt->lls_id));
     }

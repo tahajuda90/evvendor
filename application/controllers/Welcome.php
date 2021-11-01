@@ -21,6 +21,7 @@ class Welcome extends CI_Controller {
 //        print_r($this->M_ISatker->save(563590));
             
 		//$this->load->view('welcome_message');
-                print_r(load_menu()['penilaian']);
+//                print_r(load_menu()['penilaian']);
+        print_r(fdatetodb('Oct 11, 2021'));
 	}
 }

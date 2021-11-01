@@ -68,7 +68,11 @@ class C_SatuanKerja extends CI_Controller{
     }
     
     public function delete($id){
-        $this->M_Satker->delete($id);
+        if($this->M_Satker->delete($id)){
+            redirect('satker');
+        }else{
+            redirect('satker');
+        }
     }
 }
 

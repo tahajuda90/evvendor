@@ -7,7 +7,8 @@
       </div>
       <ul class="app-menu">
           <?php
-          foreach(load_menu() as $menu){
+          $name = $this->ion_auth->get_users_groups()->row()->name;
+          foreach(load_menu($name) as $menu){
               if(isset($menu['sub'])){
                   echo '<li class="treeview '.(in_array($this->uri->segment(1), array_keys($menu['sub'])) ? 'is-expanded':'').'"><a class="app-menu__item" href="#" data-toggle="treeview">'.$menu['ikon'].'<span class="app-menu__label">'.$menu['menu'].'</span><i class="treeview-indicator fa fa-angle-right"></i></a>'
                           . '<ul class="treeview-menu">';

@@ -83,10 +83,18 @@ class C_Rekanan extends CI_Controller{
             'rkn_email'=> $this->input->post('rkn_email',TRUE),
             'kbp'=> $this->input->post('kbp',TRUE)
         );
-        $this->M_Rekanan->update($msk->id_rekanan,$data);
+        if($this->M_Rekanan->update($msk->id_rekanan,$data)){
+            redirect('rekanan');
+        }
     }
     
-    public function delete(){}
+    public function delete($id){
+        if($this->M_Rekanan->delete($id)){
+            redirect('rekanan','refresh');
+        }else{
+            redirect('rekanan','refresh');
+        }
+    }
     
     public function detail($id_rekanan){
         $rkn = $this->M_Rekanan->detail($id_rekanan);

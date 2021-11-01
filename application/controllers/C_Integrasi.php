@@ -44,7 +44,7 @@ class C_Integrasi extends CI_Controller{
         if ($this->M_IPaket->is_online()) {
             if ($this->M_IPaket->satker_check($llg)) {
                 $data['title'] = $pkt->stk_nama;
-                $data['body'] = "Tahun : " . $pkt->tahun . "<br><b>" . $pkt->pkt_nama . "</b><br> Pagu : " . rupiah($pkt->pkt_pagu) . "<br>" .
+                $data['body'] = "Tanggal Paket : " . fdate($pkt->pkt_tgl_buat) . "<br><b>" . $pkt->pkt_nama . "</b><br> Pagu : " . rupiah($pkt->pkt_pagu) . "<br>" .
                         ($pkt->status == 1 ? 'Non-Tender' : 'Tender')
                 ;
                 $data['button'] = '<a class="btn btn-primary" href="'.base_url('C_Integrasi/paket_save/').$pkt->pkt_id.'" type="button">Tarik</a>';

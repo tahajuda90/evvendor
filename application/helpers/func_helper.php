@@ -86,17 +86,18 @@
  
         }
         
-        function load_menu(){
+        function load_menu($group=null){
             $menu = [];
             
             $menu['dashboard']['menu']='Dashboard';
             $menu['dashboard']['ikon'] = '<i class="fa fa-dashboard"></i>';
             $menu['dashboard']['link'] = 'home';
-            
+            if($group == 'admin'){
             $menu['user']['menu']='Manajemen User';
             $menu['user']['ikon'] = '<i class="app-menu__icon fa fa-user-o"></i>';
             $menu['user']['sub']['user'] = 'User';
-            
+            }
+            if(($group == 'admin') OR ($group == 'members')){
             $menu['penilaian']['menu']='Indikator Penilaian';
             $menu['penilaian']['ikon'] = '<i class="app-menu__icon fa fa-tasks"></i>';
             $menu['penilaian']['sub']['group'] = 'Group Penilaian';
@@ -114,7 +115,7 @@
             
             $menu['skor']['menu']='Penilaian';
             $menu['skor']['ikon'] = '<i class="app-menu__icon fa fa-bar-chart"></i>';
-            $menu['skor']['link']='penilaian';
+            $menu['skor']['link']='penilaian';}
             
             return $menu;
         }

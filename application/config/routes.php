@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'C_Dashboard/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -55,3 +55,5 @@ $route['user/create'] = 'C_User/create_user';
 $route['user/update/(:any)'] = 'C_User/edit_user/$1';
 $route['user/passwd'] = 'C_User/change_password';
 $route['login'] = 'C_User/login';
+
+$route['home'] = 'C_Dashboard/index';

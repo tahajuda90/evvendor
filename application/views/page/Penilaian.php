@@ -38,13 +38,13 @@
                                     <?=$pkt->nama_kualifikasi?>
                                 </td>
                                 <td><?=number_format($pkt->rating_nilai, 2, ',', ' ')?></td>
-                                <td><?php if($pkt->id_kualifikasi == null){
-                                    echo '<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-id="'.$pkt->id_paket.'" data-val="'.$pkt->pkt_nama.'" data-target="#exampleModal">Pilih Kualifikasi</button>';
-                                }elseif($pkt->total_nilai == null){
+                                <td><?php 
+                                if( $pkt->id_kualifikasi != null){
+                                if($pkt->total_nilai == null){
                                     echo '<a type="button" href="'.base_url('penilaian/create/'.$pkt->id_kontrak).'" class="btn btn-sm btn-primary">Buat Penilaian</a>';
                                 }else{
                                     echo '<a type="button" href="'.base_url('penilaian/update/'.$pkt->id_kontrak).'" class="btn btn-sm btn-warning">Edit Penilaian</a>';
-                                } ?></td>
+                                }} ?></td>
                             </tr>
                     
                     <?php        
@@ -57,47 +57,13 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <form method="get" action="<?= base_url('C_Skoring/assign_klas')?>">
-      <div class="modal-body">
-          <input type="hidden" id="paketid" name="id_paket" />
-          <select class="form-control" name="id_kualifikasi">
-              <?php
-              foreach($kls as $kls){
-                  echo '<option value="'.$kls->id_kualifikasi.'">'.$kls->kode_kualifikasi.'-'.$kls->nama_kualifikasi.'</option>';
-              }
-              ?>
-          </select>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-        </form>
-    </div>
-  </div>
-</div>
+
 <script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
     $('#sampleTable').DataTable();
     
-    $("#exampleModal").on('show.bs.modal', function(event) {
-        var myVal = $(event.relatedTarget).data('val');
-        var myId = $(event.relatedTarget).data('id');
-        $("#paketid").val(myId);
-        console.log(myVal);
-        console.log(myId);
-        $("#exampleModalLabel").html('Paket : '+myVal);
-    });
+   
     });
 </script>

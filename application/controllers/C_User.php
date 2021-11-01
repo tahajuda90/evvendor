@@ -151,7 +151,7 @@ class C_User extends CI_Controller{
         if ($this->form_validation->run() === TRUE) {
             $remember = (bool)$this->input->post('remember');
             if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)){
-                print_r('bisa');
+                redirect('home', 'refresh');
             }else{
                 $this->session->set_flashdata('message', $this->ion_auth->errors());
                 redirect('login', 'refresh');

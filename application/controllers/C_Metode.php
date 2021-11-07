@@ -59,5 +59,9 @@ class C_Metode extends CI_Controller{
     public function delete(){
         
     }
+    
+    public function json($ntd){
+        echo json_encode($this->M_MtdP->get_cond(array('is_nontender'=>$ntd)));
+    }
 }
 

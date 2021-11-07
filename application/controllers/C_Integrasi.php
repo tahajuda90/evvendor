@@ -40,8 +40,9 @@ class C_Integrasi extends CI_Controller{
     
     public function paket(){
         $llg = $this->input->post('lls_id');
-        $pkt = $this->M_IPaket->by_id('lls_id',$llg);
+        
         if ($this->M_IPaket->is_online()) {
+            $pkt = $this->M_IPaket->by_id('lls_id',$llg);
             if ($this->M_IPaket->satker_check($llg)) {
                 $data['title'] = $pkt->stk_nama;
                 $data['body'] = "Tanggal Paket : " . fdate($pkt->pkt_tgl_buat) . "<br><b>" . $pkt->pkt_nama . "</b><br> Pagu : " . rupiah($pkt->pkt_pagu) . "<br>" .

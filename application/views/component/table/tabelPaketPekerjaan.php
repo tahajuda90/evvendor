@@ -27,9 +27,10 @@
                                 </td>
                                 <td><?php
                                 if($pkt->id_kualifikasi == null){
-                                    echo '<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-id="'.$pkt->id_paket.'" data-val="'.$pkt->pkt_nama.'" data-target="#exampleModal">Pilih Kualifikasi</button>';
+                                    //echo '<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-id="'.$pkt->id_paket.'" data-val="'.$pkt->pkt_nama.'" data-target="#exampleModal">Pilih Kualifikasi</button>';
+                                    echo '<a type="button" class="btn btn-sm btn-info" href="'. base_url('paket/update/'.$pkt->id_paket).'">Pilih Kualifikasi</a>';
                                 }
-                                if(($pkt->child == 0)&&($pkt->is_nontender == 1)||($pkt->pkt_id == null)){
+                                else if(($pkt->child == 0)&&($pkt->is_nontender == 1)||($pkt->pkt_id == null)){
                                     echo '<a type="button" class="btn btn-sm btn-primary" href="'. base_url('paket/kontrak/create/'.$pkt->id_paket).'">Buat Kontrak</a>';
                                     echo '<br> <a type="button" class="btn btn-sm btn-danger" href="'. base_url('C_PaketKontrak/delete/'.$pkt->id_paket).'">Delete</a>';
                                 }
@@ -38,11 +39,11 @@
                                     echo '<br> <a type="button" class="btn btn-sm btn-danger" href="'. base_url('C_PaketKontrak/delete/'.$pkt->id_paket).'">Delete</a>';
                                 }else if(($pkt->child > 0)){
                                     echo '<a type="button" class="btn btn-sm btn-primary" href="'. base_url('paket/kontrak/'.$pkt->id_paket).'">Detail Paket</a>';
+                                    echo '<a type="button" class="btn btn-sm btn-warning" href="'. base_url('paket/update/'.$pkt->id_paket).'">Edit</a>';
                                 }else{
                                     echo '<a type="button" class="btn btn-sm btn-primary">Detail</a>';
                                 }
                                 ?>
-                                    <br><a type="button" class="btn btn-sm btn-warning" href="<?= base_url('paket/update/'.$pkt->id_paket)?>">Edit</a>
                                 </td>
                             </tr>
                     
@@ -52,34 +53,7 @@
                   
                 </tbody>
                 </table>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <form method="get" action="<?= base_url('C_PaketKontrak/assign_klas')?>">
-      <div class="modal-body">
-          <input type="hidden" id="paketid" name="id_paket" />
-          <select class="form-control" name="id_kualifikasi">
-              <?php
-              foreach($kls as $kls){
-                  echo '<option value="'.$kls->id_kualifikasi.'">'.$kls->kode_kualifikasi.'-'.$kls->nama_kualifikasi.'</option>';
-              }
-              ?>
-          </select>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-        </form>
-    </div>
-  </div>
-</div>
+
 <script type="text/javascript">
     $( document ).ready(function() {
          $("#exampleModal").on('show.bs.modal', function(event) {

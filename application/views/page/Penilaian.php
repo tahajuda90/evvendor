@@ -17,6 +17,7 @@
                 <thead>
                   <tr>
                     <th>Kode</th>
+                    <th>Satuan Kerja</th>
                     <th>Nama Paket</th>
                     <th>Pagu/HPS</th>
                     <th>Jenis Pengadaan</th>
@@ -31,6 +32,7 @@
                                 <td>Tender : <?= $pkt->lls_id ?><br>
                                 Sirup : <?= $pkt->rup_id ?>
                                 </td>
+                                <td><?=$pkt->stk_nama?></td>
                                 <td><b><?=$pkt->pkt_nama?></b><br>Penyedia : <?=$pkt->rkn_nama?></td>
                                 <td><?= rupiah($pkt->pkt_pagu)?><br><?= rupiah($pkt->pkt_hps)?></td>
                                 <td><?= ($pkt->is_nontender == 1 ? 'Non-Tender' : 'Tender')?>

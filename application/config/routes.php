@@ -11,10 +11,14 @@ $route['group/update/(:any)'] = 'C_IndikatorNilai/update/$1';
 $route['group/indikator/update/(:any)'] = 'C_IndikatorNilai/update_ind/$1';
 
 $route['kualifikasi'] = 'C_Klasifikasi/index';
-$route['kualifikasi/indikator/(:any)'] = 'C_Klasifikasi/index_ind/$1';
+$route['kualifikasi/group/(:any)'] = 'C_Klasifikasi/index_grp/$1';
+$route['kualifikasi/indikator/(:any)/(:any)'] = 'C_Klasifikasi/index_ind/$1/$2';
 $route['kualifikasi/create'] = 'C_Klasifikasi/create';
 $route['kualifikasi/update/(:any)'] = 'C_Klasifikasi/update/$1';
 $route['kualifikasi/penilaian'] = 'C_IndikatorNilai/bridging';
+
+$route['metode'] = 'C_Metode/index';
+$route['metode/update/(:any)'] = 'C_Metode/update/$1';
 
 $route['satker'] = 'C_SatuanKerja/index';
 $route['satker/create'] = 'C_SatuanKerja/create';

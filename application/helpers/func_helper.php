@@ -100,13 +100,14 @@
             if(($group == 'admin') OR ($group == 'members')){
             $menu['penilaian']['menu']='Indikator Penilaian';
             $menu['penilaian']['ikon'] = '<i class="app-menu__icon fa fa-tasks"></i>';
-            $menu['penilaian']['sub']['group'] = 'Group Penilaian';
+            $menu['penilaian']['sub']['group'] = 'Aspek Penilaian';
             $menu['penilaian']['sub']['kualifikasi'] = 'Kualifikasi Pekerjaan';
             
             $menu['master']['menu']='Master';
             $menu['master']['ikon'] = '<i class="app-menu__icon fa fa-bars"></i>';
             $menu['master']['sub']['satker']='Satuan Kerja';
             $menu['master']['sub']['bntkusaha']='Bentuk Usaha';
+            $menu['master']['sub']['metode']='Metode Pemilihan';
             $menu['master']['sub']['paket']='Paket Pekerjaan';
             
             $menu['perusahaan']['menu']='Perusahaan';

@@ -4,13 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_Skoring extends CI_Model{
     public function __construct() {
         parent::__construct();
-        $this->load->model(array('M_Paket','M_Kontrak','M_Rekanan','M_KlasIdktr'));
+        $this->load->model(array('M_Paket','M_Kontrak','M_Rekanan','M_KlasIdktr','M_Satker'));
     }
     
     function get_paket(){
-        $this->db->select('kontrak.id_kontrak,rekanan.rkn_nama,penilaian.total_nilai,penilaian.rating_nilai');
+        $this->db->select('kontrak.id_kontrak,rekanan.rkn_nama,penilaian.total_nilai,penilaian.rating_nilai,satuan_kerja.stk_nama');
         $this->M_Paket->child($this->M_Paket->table, $this->M_Kontrak->table, $this->M_Paket->primary);
         $this->db->where($this->M_Kontrak->table.'.id_kontrak IS NOT NULL AND '.$this->M_Kontrak->table.'.id_rekanan IS NOT NULL');
+        $this->db->join($this->M_Satker->table,$this->M_Satker->table.'.id_satker = '.$this->M_Paket->table.'.id_satker','LEFT');
         $this->db->join($this->M_Rekanan->table,$this->M_Kontrak->table.'.id_rekanan = '.$this->M_Rekanan->table.'.id_rekanan','LEFT');
         $this->db->join('penilaian','kontrak.id_kontrak = penilaian.id_kontrak','LEFT');
         return $this->M_Paket->get_all(true);

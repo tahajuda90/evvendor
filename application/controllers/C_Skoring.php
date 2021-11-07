@@ -48,7 +48,7 @@ class C_Skoring extends CI_Controller{
             $nilai=$nilai+($this->input->post('nilai_'.$idktr->id_indikator)*$idktr->bobot);
             $ttlbbt=$ttlbbt+$idktr->bobot;
         }
-        if($this->M_Nilai->insert(array('total_nilai'=>$nilai,'rating_nilai'=>$nilai/$ttlbbt,'id_kontrak'=>$data['kontrak']->id_kontrak,'id_rekanan'=>$data['rekanan']->id_rekanan))){
+        if($this->M_Nilai->insert(array('total_nilai'=>$nilai,'rating_nilai'=>$nilai/$ttlbbt,'id_user'=>$this->ion_auth->get_user_id(),'id_kontrak'=>$data['kontrak']->id_kontrak,'id_rekanan'=>$data['rekanan']->id_rekanan))){
             redirect('penilaian');
         }
     }

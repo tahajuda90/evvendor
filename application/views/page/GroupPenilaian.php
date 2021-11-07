@@ -1,29 +1,29 @@
 <div class="app-title">
     <div>
-        <h1>Group Penilaian</h1>
-        <p>Daftar parameter group penilaian vendor</p>
+        <h1>Aspek Penilaian</h1>
+        <p>Daftar parameter aspek penilaian vendor</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="breadcrumb-item active">Group Penilaian</li>
+        <li class="breadcrumb-item"><a href="<?= site_url('home')?>"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item active">Aspek Penilaian</li>
     </ul>
 </div>
 <div class="row">
     <div class="col-md-12">
         <div class="tile">
-            <h3 class="tile-title">Input Group Penilaian</h3>
+            <h3 class="tile-title">Input Aspek Penilaian</h3>
             <div class="tile-body">
                 <?php $this->load->view('component/form/input_group_penilaian');?>
             </div>
         </div>
         <div class="tile">
-            <h3 class="tile-title">Daftar Group Penilaian</h3>
+            <h3 class="tile-title">Daftar Aspek Penilaian</h3>
             <div class="tile-body">
             <table class="table table-bordered">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th style="width:70%">Nama Group</th>
+                  <th style="width:70%">Nama Aspek Penilaian</th>
                   <th>Action</th>
                 </tr>
               </thead>

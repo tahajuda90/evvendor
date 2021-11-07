@@ -18,6 +18,20 @@ class M_KlasIdktr extends MY_Model{
         $this->db->join($this->M_GroupN->table,'indikator_penilaian.id_group = group_penilaian.id_group','LEFT');
         return parent::get_cond($cond);
     }
+    
+    public function get_by_id($id) {
+        $this->db->select($this->table.'.*,'.$this->M_IndikatorN->table.'.id_group');
+        $this->db->join($this->M_IndikatorN->table,'kualifikasi_indikator.id_indikator = indikator_penilaian.id_indikator','LEFT');
+        return parent::get_by_id($id);
+    }
+    
+    public function get_group($cond){
+        $this->db->select($this->M_IndikatorN->table.'.id_group,'.$this->M_GroupN->table.'.nama_group,SUM('.$this->table.'.bobot) as bobot');
+        $this->db->join($this->M_IndikatorN->table,'kualifikasi_indikator.id_indikator = indikator_penilaian.id_indikator','LEFT');
+        $this->db->join($this->M_GroupN->table,'indikator_penilaian.id_group = group_penilaian.id_group','LEFT');
+        $this->db->group_by($this->M_IndikatorN->table.'.id_group');
+        return parent::get_cond($cond);
+    }
 }
 
 

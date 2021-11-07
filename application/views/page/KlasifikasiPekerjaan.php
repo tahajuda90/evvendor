@@ -4,7 +4,7 @@
         <p>Kualifikasi pekerjaan / Jenis Pengadaan</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="<?= site_url('home')?>"><i class="fa fa-home fa-lg"></i></a></li>
         <li class="breadcrumb-item active">Kualifikasi Pekerjaan</li>
     </ul>
 </div>

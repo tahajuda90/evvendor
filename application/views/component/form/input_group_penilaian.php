@@ -1,6 +1,6 @@
 <form method="post" action="<?=$action?>">
 <div class="form-group">
-        <label class="control-label">Nama Group</label>
+        <label class="control-label">Nama Aspek Penilaian</label>
         <input type="hidden" name="id_group" value="<?=$id_group?>">
         <input class="form-control col-8" type="text" value="<?=$nama_group?>" name="nama_group">
     </div> 

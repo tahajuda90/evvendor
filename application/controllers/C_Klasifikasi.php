@@ -13,10 +13,19 @@ class C_Klasifikasi extends CI_Controller{
         $this->load->view('Main_v',$data);
     }
     
-    public function index_ind($id){
+    public function index_ind($id,$grp){
         $data['klasifikasi'] = $this->M_KlasP->get_by_id($id);
-        $data['indikator'] = $this->M_KlasIdktr->get_cond(array('id_kualifikasi'=>$id));
+        $data['group'] = $this->M_KlasIdktr->get_group(array('id_kualifikasi'=>$id,'group_penilaian.id_group'=>$grp))[0];
+        $data['indikator'] = $this->M_KlasIdktr->get_cond(array('id_kualifikasi'=>$id,'group_penilaian.id_group'=>$grp));        
+//        print_r($data);
         $data['page'] = 'page/KlasifikasiIndikator';
+        $this->load->view('Main_v',$data);
+    }
+    
+    public function index_grp($id){
+        $data['klasifikasi'] = $this->M_KlasP->get_by_id($id);
+        $data['group'] = $this->M_KlasIdktr->get_group(array('id_kualifikasi'=>$id));
+        $data['page'] = 'page/KlasifikasiGroup';
         $this->load->view('Main_v',$data);
     }
     
@@ -48,21 +57,22 @@ class C_Klasifikasi extends CI_Controller{
         $data['input'] = $this->input->post('id_indikator',TRUE);
         $hasil['benar']=0;
         $hasil['salah']=0;
+//        print_r($data['input']);
         foreach($data['input'] as $id){
             $msuk = array(
                 'id_indikator'=> $id,
                 'id_kualifikasi'=> $data['klasifikasi']->id_kualifikasi,
                 'active'=> 1
             );
-            if($this->M_KlasIdktr->insert($msuk,
-                    array('id_indikator'=>$msuk['id_indikator'],'id_kualifikasi'=>$msuk['id_kualifikasi']))
-                    ){
-                $hasil['benar']=$hasil['benar']+1;   
-            }else{
-                $hasil['salah']=$hasil['salah']+1;
+            if ($this->M_KlasIdktr->insert($msuk,
+                            array('id_indikator' => $msuk['id_indikator'], 'id_kualifikasi' => $msuk['id_kualifikasi']))
+            ) {
+                $hasil['benar'] = $hasil['benar'] + 1;
+            } else {
+                $hasil['salah'] = $hasil['salah'] + 1;
             }
         }
-        redirect('kualifikasi/indikator/'.$data['klasifikasi']->id_kualifikasi);
+        redirect('kualifikasi/group/'.$data['klasifikasi']->id_kualifikasi);
     }
     
     public function update($id){
@@ -89,14 +99,14 @@ class C_Klasifikasi extends CI_Controller{
         }
     }
     
-    public function update_action_ind(){
+    public function update_action_ind($kls,$grp){
         $bobot = $this->input->post('bobot');
         foreach ($bobot as $key=>$bbt){            
             $this->M_KlasIdktr->update($key,array('bobot'=>$bbt));
         }
-        redirect('kualifikasi/indikator/'.$this->input->post('id_kualifikasi'));
+        redirect('kualifikasi/indikator/'.$kls.'/'.$grp);
     }
-    
+      
     public function delete($id){
         $klas = $this->M_KlasP->get_by_id($id);
         if(isset($klas)){
@@ -113,11 +123,11 @@ class C_Klasifikasi extends CI_Controller{
             switch ($klasind->active){
                 case 1:
                     $this->M_KlasIdktr->update($klasind->id_indkua,array('active'=>0));
-                    redirect('kualifikasi/indikator/'.$klasind->id_kualifikasi);
+                    redirect('kualifikasi/indikator/'.$klasind->id_kualifikasi.'/'.$klasind->id_group);
                     break;
                 case 0:
                     $this->M_KlasIdktr->update($klasind->id_indkua,array('active'=>1));
-                    redirect('kualifikasi/indikator/'.$klasind->id_kualifikasi);
+                    redirect('kualifikasi/indikator/'.$klasind->id_kualifikasi.'/'.$klasind->id_group);
                     break;
             }            
         }

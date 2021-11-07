@@ -4,7 +4,7 @@
         <p>Daftar parameter indikator penilaian vendor</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><a href="<?= base_url()?>"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="<?= site_url('home')?>"><i class="fa fa-home fa-lg"></i></a></li>
         <li class="breadcrumb-item"><a href="<?= base_url('group')?>">Group Penilaian</a></li>
         <li class="breadcrumb-item active">Indikator Penilaian</li>
     </ul>

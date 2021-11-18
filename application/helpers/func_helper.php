@@ -95,7 +95,7 @@
             if($group == 'admin'){
             $menu['user']['menu']='Manajemen User';
             $menu['user']['ikon'] = '<i class="app-menu__icon fa fa-user-o"></i>';
-            $menu['user']['sub']['user'] = 'User';
+            $menu['user']['link'] = 'user';
             }
             if(($group == 'admin') OR ($group == 'members')){
             $menu['penilaian']['menu']='Indikator Penilaian';
@@ -106,6 +106,7 @@
             $menu['master']['menu']='Master';
             $menu['master']['ikon'] = '<i class="app-menu__icon fa fa-bars"></i>';
             $menu['master']['sub']['satker']='Satuan Kerja';
+            $menu['master']['sub']['ppk']='P. Pembuat Komitmen';
             $menu['master']['sub']['bntkusaha']='Bentuk Usaha';
             $menu['master']['sub']['metode']='Metode Pemilihan';
             $menu['master']['sub']['paket']='Paket Pekerjaan';

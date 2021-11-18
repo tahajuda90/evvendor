@@ -31,9 +31,11 @@
                         <?php foreach ($user->groups as $group): ?>
                             <?php echo htmlspecialchars($group->name, ENT_QUOTES, 'UTF-8'); ?><br/>
     <?php endforeach ?>
+                            <?='<b>'.(isset($user->department)?$user->department->stk_nama:'').'</b>'?>
                     </td>
                     <td><?php echo ($user->active) ? anchor("C_User/deactivate/" . $user->id, lang('index_active_link')) : anchor("C_User/activate/" . $user->id, lang('index_inactive_link')); ?></td>
-                    <td><a class="btn btn-warning btn-sm" href="<?= base_url('user/update/'.$user->id)?>" type="button">Edit</a></td>
+                    <td><a class="btn btn-warning btn-sm" href="<?= base_url('user/update/'.$user->id)?>" type="button">Edit</a>
+                    <?= in_array((object)array('id'=>3,'name'=>'ppk','description'=>'Akun Ppk'), $user->groups)?'<a class="btn btn-primary btn-sm" href="'.base_url('user/satker/'.$user->user_id).'" type="button">Pilih Satker</a>':""?></td>
                 </tr>
                 <?php
                 $no++;

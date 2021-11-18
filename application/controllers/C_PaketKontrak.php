@@ -190,12 +190,5 @@ class C_PaketKontrak extends CI_Controller{
         }
     }
 
-    public function assign_klas(){
-        $data['id_paket'] = $this->input->get('id_paket');
-        $data['id_kualifikasi'] = $this->input->get('id_kualifikasi');
-        if($this->M_Paket->update($this->input->get('id_paket'),array('id_kualifikasi'=>$this->input->get('id_kualifikasi')))){
-            redirect('paket','refresh');
-        }
-    }
 }
 

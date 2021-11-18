@@ -56,8 +56,14 @@ class C_Metode extends CI_Controller{
         }
     }
     
-    public function delete(){
-        
+    public function delete($id){
+        $mtd = $this->M_MtdP->get_by_id($id);
+        if(isset($mtd)){
+            $this->M_MtdP->delete($mtd->id_mtd);
+            redirect('metode');
+        }else{
+            redirect('metode');
+        }
     }
     
     public function json($ntd){

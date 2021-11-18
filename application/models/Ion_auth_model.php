@@ -30,7 +30,7 @@ class Ion_auth_model extends CI_Model
 	/**
 	 * Max cookie lifetime constant
 	 */
-	const MAX_COOKIE_LIFETIME = 63072000; // 2 years = 60*60*24*365*2 = 63072000 seconds;
+	const MAX_COOKIE_LIFETIME = 7776000; // 2 years = 60*60*24*365*2 = 63072000 seconds;
 
 	/**
 	 * Max password size constant
@@ -2796,4 +2796,20 @@ class Ion_auth_model extends CI_Model
 			return FALSE;
 		}
 	}
+        
+        public function get_users_department($id = false){
+            $id || $id = $this->session->userdata('user_id');
+            return $this->db->select($this->tables['users_department'].'.'.$this->join['satker'].','.$this->tables['satker'].'.stk_nama,'.$this->tables['satker'].'.stk_id')
+		                ->where($this->tables['users_department'].'.'.$this->join['users'], $id)
+		                ->join($this->tables['satker'], $this->tables['users_department'].'.'.$this->join['satker'].'='.$this->tables['satker'].'.id_satker')
+		                ->get($this->tables['users_department']);
+        }
+        
+        public function create_users_department($id_user,$id_satker){
+            return $this->db->insert($this->tables['users_department'], array('user_id'=>$id_user,'id_satker'=>$id_satker));
+        }
+        
+        public function delete_users_department($id_user){
+            return $this->db->delete($this->tables['users_department'],array('user_id'=>$id_user));
+        }
 }

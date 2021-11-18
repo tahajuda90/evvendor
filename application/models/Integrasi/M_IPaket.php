@@ -26,11 +26,15 @@ select * from taha_paket_nontender
     }
     
     public function satker_check($lls){
-        $pkt = $this->by_id('lls_id', $lls);
-        $opd = $this->M_Satker->get_cond(array('stk_id'=>$pkt->stk_id));
-        if(count($opd) > 0){
-            return true;
-        }else{
+        if ($this->by_id('lls_id', $lls)) {
+            $pkt = $this->by_id('lls_id', $lls);
+            $opd = $this->M_Satker->get_cond(array('stk_id' => $pkt->stk_id));
+            if (count($opd) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
             return false;
         }
     }

@@ -54,7 +54,7 @@
     
     <div class="col-12">
     <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Tambah</button>&nbsp;&nbsp;&nbsp;
-    <a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+    <a class="btn btn-secondary" href="<?= base_url('rekanan/detail/'.$rekanan->id_rekanan)?>"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
     </div>
 
 </form>

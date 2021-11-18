@@ -7,10 +7,19 @@
         <b>Kode Sirup :</b> <?= ucfirst($pkt->rup_id) ?><br>                        
     </div>
     <div class="col-6">
-        <b>Metode Pemilihan : </b> <?= ($pkt->is_nontender == 1 ? 'Non-Tender' : 'Tender') ?><br>
+        <b>Metode Pemilihan : </b> <?= ($pkt->is_nontender == 1 ? 'Non-Tender' : 'Tender/Seleksi') ?> : <?=$pkt->nama_metode?><br>
         <b>Jenis Pekerjaan :</b> <?= ucfirst($pkt->nama_kualifikasi) ?><br>
         <b>Nilai Pagu : </b> <?= rupiah($pkt->pkt_pagu) ?><br>
         <b>Nilai HPS : </b> <?= rupiah($pkt->pkt_hps) ?><br>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 offset-6">
+        <?php if(isset($pkt->ppk_nip)){
+     echo '<b>Nama PPK :</b>'.ucfirst($pkt->ppk_nama);
+        }else if(isset($pkt->ppk_id)){
+            echo '<a class="btn btn-sm btn-primary pull-right" type="button" href="'. base_url('C_Integrasi/ppk/'.$pkt->ppk_id).'"><i class="fa fa-download"></i>Tarik PPK</a>';
+        }?>
     </div>
 </div>
 <div class="row">

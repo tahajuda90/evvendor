@@ -25,6 +25,8 @@ $route['satker/create'] = 'C_SatuanKerja/create';
 $route['satker/update/(:any)'] = 'C_SatuanKerja/update/$1';
 $route['satker/integrasi'] = 'C_Integrasi/satker';
 
+$route['ppk'] = 'C_Ppk/index';
+
 $route['paket'] = 'C_PaketKontrak/index';
 $route['paket/kontrak/(:any)'] = 'C_PaketKontrak/index_ktr/$1';
 $route['paket/create'] = 'C_PaketKontrak/create';
@@ -58,6 +60,7 @@ $route['user'] = 'C_User/index';
 $route['user/create'] = 'C_User/create_user';
 $route['user/update/(:any)'] = 'C_User/edit_user/$1';
 $route['user/passwd'] = 'C_User/change_password';
+$route['user/satker/(:any)'] = 'C_User/assign_department/$1';
 $route['login'] = 'C_User/login';
 
 $route['home'] = 'C_Dashboard/index';

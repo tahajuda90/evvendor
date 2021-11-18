@@ -74,5 +74,9 @@ class C_SatuanKerja extends CI_Controller{
             redirect('satker');
         }
     }
+    
+    public function json(){
+        echo json_encode($this->M_Satker->get_all());
+    }
 }
 

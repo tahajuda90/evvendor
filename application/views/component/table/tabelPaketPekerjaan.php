@@ -6,7 +6,7 @@
                     <th>Pagu</th>
                     <th>HPS</th>
                     <th>Satuan Kerja</th>
-                    <th>Jenis Pengadaan</th>
+                    <th style="width: 20%">Jenis Pengadaan</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -21,9 +21,11 @@
                                 <td><?= rupiah($pkt->pkt_pagu)?></td>
                                 <td><?= rupiah($pkt->pkt_hps)?></td>
                                 <td><?= $pkt->stk_nama?></td>
-                                <td><?= ($pkt->is_nontender == 1 ? 'Non-Tender' : 'Tender/Seleksi')?>
+                                <td><?= ($pkt->is_nontender == 1 ? '<span class="badge badge-pill badge-info">Non-Tender</span>' : '<span class="badge badge-pill badge-info">Tender/Seleksi</span>')?>
                                     <br>
                                     <?=$pkt->nama_kualifikasi?>
+                                    <br>
+                                    
                                 </td>
                                 <td><?php
                                 if($pkt->id_kualifikasi == null){
@@ -31,7 +33,7 @@
                                     echo '<a type="button" class="btn btn-sm btn-info" href="'. base_url('paket/update/'.$pkt->id_paket).'">Pilih Kualifikasi</a>';
                                 }
                                 else if(($pkt->child == 0)&&($pkt->is_nontender == 1)||($pkt->pkt_id == null)){
-                                    echo '<a type="button" class="btn btn-sm btn-primary" href="'. base_url('paket/kontrak/create/'.$pkt->id_paket).'">Buat Kontrak</a>';
+                                    echo '<a type="button" class="btn btn-sm btn-primary" href="'. base_url('C_Integrasi/kontraknon_save/'.$pkt->id_paket).'">Tarik Kontrak</a>';
                                     echo '<br> <a type="button" class="btn btn-sm btn-danger" href="'. base_url('C_PaketKontrak/delete/'.$pkt->id_paket).'">Delete</a>';
                                 }
                                 else if(($pkt->child == 0)&&($pkt->pkt_id != null)&&($pkt->is_nontender == 0)){
@@ -54,17 +56,5 @@
                 </tbody>
                 </table>
 
-<script type="text/javascript">
-    $( document ).ready(function() {
-         $("#exampleModal").on('show.bs.modal', function(event) {
-        var myVal = $(event.relatedTarget).data('val');
-        var myId = $(event.relatedTarget).data('id');
-        $("#paketid").val(myId);
-        console.log(myVal);
-        console.log(myId);
-        $("#exampleModalLabel").html('Paket : '+myVal);
-    });
-    });
-</script>
 
 

@@ -23,6 +23,7 @@ class C_User extends CI_Controller{
             $data['users'] = $this->ion_auth->users()->result();
             foreach ($data['users'] as $k => $user) {
                 $data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+                $data['users'][$k]->department = $this->ion_auth->get_users_department($user->id)->row();
             }
             $data['page'] = 'page/User';
             $data['content'] = 'component/table/tabelUser';
@@ -194,6 +195,29 @@ class C_User extends CI_Controller{
             $this->ion_auth->deactivate($id);
         }
         redirect('user', 'refresh');
+    }
+    
+    
+    public function assign_department($id){
+        $data['user'] = $this->ion_auth->user($id)->row();
+        $data['user']->department = $this->ion_auth->get_users_department($id)->row();
+        $data['page'] = 'page/UserSatker';
+        $this->load->view('Main_v',$data);
+        
+    }
+    
+    public function save_satker(){
+        $this->form_validation->set_rules('id_satker', 'Satker ID', 'trim|required');
+        if($this->form_validation->run() == FALSE){
+            redirect('user/satker/'.$this->input->post('user_id'));
+        }else{
+            $this->ion_auth->delete_users_department($this->input->post('user_id'));
+            if($this->ion_auth->create_users_department($this->input->post('user_id'),$this->input->post('id_satker'))){
+                redirect('user','refresh');
+            }else{
+                redirect('user/satker/'.$this->input->post('user_id'));
+            }
+        }
     }
 
 }

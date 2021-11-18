@@ -30,25 +30,35 @@ class C_IndikatorNilai extends CI_Controller{
     }
     
     public function create_action(){
-        $data = array(
-        'nama_group'=> $this->input->post('nama_group',TRUE)
-        );
-        if($this->M_GroupN->insert($data)){
+        $this->form_validation->set_rules('nama_group', 'Nama Aspek', 'trim|required');
+        if ($this->form_validation->run() == FALSE) {
             redirect('group');
-        }else{
-            redirect('group');
+        } else {
+            $data = array(
+                'nama_group' => $this->input->post('nama_group', TRUE)
+            );
+            if ($this->M_GroupN->insert($data)) {
+                redirect('group');
+            } else {
+                redirect('group');
+            }
         }
     }
     
     public function create_action_ind(){
-        $data = array(
-            'id_group'=> $this->input->post('id_group',TRUE),
-            'nama_indikator'=> $this->input->post('nama_indikator',TRUE)
-        );
-        if($this->M_IndikatorN->insert($data)){
-            redirect('group/indikator/'.$data['id_group']);
-        }else{
-            redirect('group/indikator/'.$data['id_group']);
+        $this->form_validation->set_rules('nama_indikator', 'Nama Indikator', 'trim|required');
+        if ($this->form_validation->run() == FALSE) {
+            redirect('group/indikator/'.$this->input->post('id_group', TRUE));
+        } else {
+            $data = array(
+                'id_group' => $this->input->post('id_group', TRUE),
+                'nama_indikator' => $this->input->post('nama_indikator', TRUE)
+            );
+            if ($this->M_IndikatorN->insert($data)) {
+                redirect('group/indikator/' . $data['id_group']);
+            } else {
+                redirect('group/indikator/' . $data['id_group']);
+            }
         }
     }
     

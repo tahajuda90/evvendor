@@ -6,7 +6,8 @@ class C_Integrasi extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model(array('Integrasi/M_ISatker','Integrasi/M_IBentukU','Integrasi/M_IPaket','Integrasi/M_IKontrak','Integrasi/M_IRekanan',
-            'Integrasi/M_IRius','Integrasi/M_IRakta','Integrasi/M_IRpjk','Integrasi/M_IRpml','Integrasi/M_IRpgr','Integrasi/M_IRpgl','Integrasi/M_IRahli','Integrasi/M_IRprl'));
+            'Integrasi/M_IRius','Integrasi/M_IRakta','Integrasi/M_IRpjk','Integrasi/M_IRpml','Integrasi/M_IRpgr','Integrasi/M_IRpgl','Integrasi/M_IRahli'
+            ,'Integrasi/M_IRprl','Integrasi/M_IKontrakNon','Integrasi/M_IPpk'));
         $this->sess = $this->session->get_userdata();
     }
     
@@ -32,7 +33,7 @@ class C_Integrasi extends CI_Controller{
     
     public function bentukU_save(){
         if($this->M_IBentukU->is_online()){
-            print_r($this->M_IBentukU->save());
+            redirect('bntkusaha');
         }else{
             show_404();
         }
@@ -86,6 +87,30 @@ class C_Integrasi extends CI_Controller{
             redirect(base_url('paket/kontrak/create/'.$id_pkt));
         }
         //redirect() ke C_PaketKontrak/index dengan session message didalam if;
+    }
+    
+    public function kontraknon_save($id_pkt){
+        if($this->M_IKontrakNon->is_online()){
+            if($this->M_IKontrakNon->save($id_pkt)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect(base_url('paket/kontrak/create/'.$id_pkt));
+            }
+        }else{
+            redirect(base_url('paket/kontrak/create/'.$id_pkt));
+        }
+    }
+    
+    public function ppk($ppk_id){
+        if($this->M_IPpk->is_online()){
+            if($this->M_IPpk->save($ppk_id)){
+                redirect($this->sess['last_url']);
+            }else{
+                redirect($this->sess['last_url']);
+            }
+        }else{
+            redirect($this->sess['last_url']);
+        }
     }
     
     public function status_penyedia(){

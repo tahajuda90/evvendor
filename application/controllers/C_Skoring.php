@@ -18,7 +18,7 @@ class C_Skoring extends CI_Controller{
         $data['kontrak'] = $this->M_Kontrak->get_by_id($id_kontrak);
         $data['pkt'] = $this->M_Paket->get_by_id($data['kontrak']->id_paket);
         $data['rekanan'] = $this->M_Rekanan->get_by_id($data['kontrak']->id_rekanan);
-        $data['indikator'] = $this->M_KlasIdktr->get_cond(array('id_kualifikasi'=>$data['pkt']->id_kualifikasi));
+        $data['indikator'] = $this->M_KlasIdktr->get_cond(array('id_kualifikasi'=>$data['pkt']->id_kualifikasi,'active'=>1));
         $data['button'] = 'Simpan';
         $data['action'] = base_url('C_Skoring/create_action/'.$data['kontrak']->id_kontrak);
         $data['page'] = 'page/PenilaianKontrak';

@@ -52,7 +52,7 @@
     </div>
     <div class="col-12">
     <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i><?=$button?></button>&nbsp;&nbsp;&nbsp;
-    <a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+    <a class="btn btn-secondary" href="<?= base_url('rekanan')?>"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
     </div>
 </form>
 <script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/jquery.mask.min.js"></script>

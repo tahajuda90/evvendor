@@ -444,5 +444,5 @@ class Ion_auth
 
 		return $this->ion_auth_model->deactivate($id);
 	}
-
+        
 }

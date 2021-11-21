@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class C_Skoring extends CI_Controller{
     public function __construct(){
         parent::__construct();
+        if (!$this->ion_auth->logged_in()) {
+            redirect('login', 'refresh');
+        }
         $this->load->model(array('M_Skoring','M_KlasP','M_Kontrak','M_Paket','M_Rekanan','M_Nilai','M_NilaiD'));
     }
     

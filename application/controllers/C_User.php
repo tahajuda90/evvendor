@@ -199,6 +199,9 @@ class C_User extends CI_Controller{
     
     
     public function assign_department($id){
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
+            redirect('C_User/logout', 'refresh');
+        }
         $data['user'] = $this->ion_auth->user($id)->row();
         $data['user']->department = $this->ion_auth->get_users_department($id)->row();
         $data['page'] = 'page/UserSatker';

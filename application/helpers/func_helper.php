@@ -97,7 +97,7 @@
             $menu['user']['ikon'] = '<i class="app-menu__icon fa fa-user-o"></i>';
             $menu['user']['link'] = 'user';
             }
-            if(($group == 'admin') OR ($group == 'members')){
+            if(($group == 'admin') OR ($group == 'operator')){
             $menu['penilaian']['menu']='Indikator Penilaian';
             $menu['penilaian']['ikon'] = '<i class="app-menu__icon fa fa-tasks"></i>';
             $menu['penilaian']['sub']['group'] = 'Aspek Penilaian';
@@ -118,6 +118,16 @@
             $menu['skor']['menu']='Penilaian';
             $menu['skor']['ikon'] = '<i class="app-menu__icon fa fa-bar-chart"></i>';
             $menu['skor']['link']='penilaian';}
+            else{
+            $menu['paket']['menu']='Paket Pekerjaan';
+            $menu['paket']['ikon'] = '<i class="app-menu__icon fa fa-briefcase"></i>';
+            $menu['paket']['link']='paket';
+            
+            $menu['skor']['menu']='Penilaian';
+            $menu['skor']['ikon'] = '<i class="app-menu__icon fa fa-bar-chart"></i>';
+            $menu['skor']['link']='penilaian';
+                
+            }
             
             return $menu;
         }

@@ -12,15 +12,20 @@ class M_Paket extends MY_Model{
     }
     
     public function get_all($custom = false) {
+        
         if ($custom) {
             $this->db->select($this->M_KlasP->table . '.nama_kualifikasi');
-            $this->db->join($this->M_KlasP->table, $this->M_KlasP->table . '.id_kualifikasi = ' . $this->table . '.id_kualifikasi', 'LEFT');
+            $this->db->join($this->M_KlasP->table, $this->M_KlasP->table . '.id_kualifikasi = ' . $this->table . '.id_kualifikasi', 'LEFT');           
             return parent::get_all();
         } else {
+            $dep = $this->ion_auth->get_users_department($this->ion_auth->get_user_id())->row();
             $this->child($this->table, $this->M_Kontrak->table, $this->primary);
             $this->db->select($this->M_Satker->table . '.stk_nama,' . $this->M_KlasP->table . '.nama_kualifikasi');
             $this->db->join($this->M_Satker->table, $this->M_Satker->table . '.id_satker = ' . $this->table . '.id_satker', 'LEFT');
             $this->db->join($this->M_KlasP->table, $this->M_KlasP->table . '.id_kualifikasi = ' . $this->table . '.id_kualifikasi', 'LEFT');
+            if(!empty($dep)){
+                $this->db->where(array('paket.id_satker'=>$dep->id_satker));
+            }
             return parent::get_all();
         }
     }

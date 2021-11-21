@@ -5,6 +5,9 @@ class C_IndikatorNilai extends CI_Controller{
     public function __construct() {
         parent::__construct();
         $this->load->model(array('M_GroupN','M_IndikatorN'));
+        if (!$this->ion_auth->logged_in()) {
+            redirect('login', 'refresh');
+        }
     }
     
     public function index(){

@@ -2798,6 +2798,8 @@ class Ion_auth_model extends CI_Model
 	}
         
         public function get_users_department($id = false){
+            $this->trigger_events('get_users_department');
+            
             $id || $id = $this->session->userdata('user_id');
             return $this->db->select($this->tables['users_department'].'.'.$this->join['satker'].','.$this->tables['satker'].'.stk_nama,'.$this->tables['satker'].'.stk_id')
 		                ->where($this->tables['users_department'].'.'.$this->join['users'], $id)

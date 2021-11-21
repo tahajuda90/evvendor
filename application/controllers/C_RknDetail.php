@@ -5,6 +5,9 @@ class C_RknDetail extends CI_Controller{
     
     public function __construct(){
         parent::__construct();
+        if (!$this->ion_auth->logged_in()) {
+            redirect('login', 'refresh');
+        }
         $this->load->model(array('M_Rekanan','M_Rakta','M_Rius','M_Rpml','M_Rpgr','M_Rpgl','M_Rahli','M_Rprl','M_Rpjk'));
     }
     

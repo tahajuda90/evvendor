@@ -5,6 +5,9 @@ class C_Integrasi extends CI_Controller{
     var $sess =null;
     public function __construct(){
         parent::__construct();
+        if (!$this->ion_auth->logged_in()) {
+            redirect('login', 'refresh');
+        }
         $this->load->model(array('Integrasi/M_ISatker','Integrasi/M_IBentukU','Integrasi/M_IPaket','Integrasi/M_IKontrak','Integrasi/M_IRekanan',
             'Integrasi/M_IRius','Integrasi/M_IRakta','Integrasi/M_IRpjk','Integrasi/M_IRpml','Integrasi/M_IRpgr','Integrasi/M_IRpgl','Integrasi/M_IRahli'
             ,'Integrasi/M_IRprl','Integrasi/M_IKontrakNon','Integrasi/M_IPpk'));

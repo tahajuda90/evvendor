@@ -64,7 +64,9 @@
 <script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
-    $('#sampleTable').DataTable();
+    $('#sampleTable').DataTable({
+        "order": [[ 0, "desc" ]]
+    });
     
    
     });

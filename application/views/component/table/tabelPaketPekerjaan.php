@@ -3,10 +3,10 @@
                   <tr>
                     <th>Kode</th>
                     <th>Nama Paket</th>
-                    <th>Pagu</th>
-                    <th>HPS</th>
+                    <th style="width: 20%">Anggaran</th>
+                    <th>Tanggal</th>
                     <th>Satuan Kerja</th>
-                    <th style="width: 20%">Jenis Pengadaan</th>
+                    <th style="width: 10%">Jenis Pengadaan</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -18,8 +18,8 @@
                                 Sirup : <?= $pkt->rup_id ?>
                                 </td>
                                 <td><?=$pkt->pkt_nama?></td>
-                                <td><?= rupiah($pkt->pkt_pagu)?></td>
-                                <td><?= rupiah($pkt->pkt_hps)?></td>
+                                <td>Pagu : <?= rupiah($pkt->pkt_pagu)?><br>HPS : <?= rupiah($pkt->pkt_hps)?></td>
+                                <td><?= fdate($pkt->pkt_tgl_buat)?></td>
                                 <td><?= $pkt->stk_nama?></td>
                                 <td><?= ($pkt->is_nontender == 1 ? '<span class="badge badge-pill badge-info">Non-Tender</span>' : '<span class="badge badge-pill badge-info">Tender/Seleksi</span>')?>
                                     <br>

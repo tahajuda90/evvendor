@@ -12,10 +12,15 @@
         <link rel="stylesheet" href="<?= base_url('assets/frontend')?>/vendor/pace/themes/orange/pace-theme-minimal.css">
         <link rel="stylesheet" href="<?= base_url('assets/frontend')?>/vendor/slick/slick.css">
         <link rel="stylesheet" href="<?= base_url('assets/frontend')?>/vendor/slick/slick-theme.css">
+        <link rel="stylesheet" href="<?= base_url('assets/frontend')?>/vendor/datatables/css-main/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="<?= base_url('assets/frontend')?>/vendor/datatables/css-bootstrap/dataTables.bootstrap.min.css">
+        
         
         <link rel="stylesheet" href="<?= base_url('assets/frontend')?>/css/main.css">
         <link rel="stylesheet" href="<?= base_url('assets/frontend')?>/css/skins/sidebar-nav-darkgray.css" type="text/css">
         <link rel="stylesheet" href="<?= base_url('assets/frontend')?>/css/skins/navbar3.css" type="text/css">
+        
+
     </head>
     <script src="<?= base_url('assets/frontend')?>/vendor/jquery/jquery.min.js"></script>
     <body class="layout-topnav">
@@ -23,11 +28,11 @@
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="top-bar clearfix">
                     <div class="container-bar">
-                        <!--<div class="brand">
-                            <a href="index.html">
-                                <img src="assets/img/logo-white-small.png" alt="Klorofil Pro Logo" class="img-responsive logo">
-                            </a>
-                        </div>-->
+                        <div class="navbar-right">
+                            <div class="navbar-form navbar-left search-form">
+                                <a type="button" class="btn btn-default" href="<?=base_url('login')?>">Sign-in <i class="fa fa-sign-in"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 

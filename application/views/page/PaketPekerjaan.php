@@ -41,11 +41,17 @@
 </div>
 </div>
 <!-- Data table plugin-->
+
 <script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/moment.min.js"></script>
+<script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/datetime-moment.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
-    $('#sampleTable').DataTable();
+    $.fn.dataTable.moment( 'D-M-Y' );
+    $('#sampleTable').DataTable({
+        "order": [[ 3, "desc" ]]
+    });
     
     $('#tarik').click(function(){
         console.log($('#lls_id').val());

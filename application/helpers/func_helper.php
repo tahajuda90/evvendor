@@ -80,10 +80,43 @@
 		return $string ? implode(', ', $string) . '.' : 'just now';
 	}
         function rupiah($angka){
-	
 	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
 	return $hasil_rupiah;
+        }
+        
+        function number_format_short( $n, $precision = 1 ) {
+    if ($n < 900) {
+        // 0 - 900
+        $n_format = number_format($n, $precision);
+         $suffix = '';
+    } else if ($n < 900000) {
+        // 0.9k-850k
+        $n_format = number_format($n / 1000, $precision);
+         $suffix = ' Ribu';
+    } else if ($n < 900000000) {
+        // 0.9m-850m
+        $n_format = number_format($n / 1000000, $precision);
+         $suffix = ' Juta';
+    } else if ($n < 900000000000) {
+        // 0.9b-850b
+        $n_format = number_format($n / 1000000000, $precision);
+         $suffix = ' Miliar';
+    } else {
+        // 0.9t+
+        $n_format = number_format($n / 1000000000000, $precision);
+         $suffix = ' Triliun';
+    }
  
+    if ( $precision > 0 ) {
+        $dotzero = '.' . str_repeat( '0', $precision );
+        $n_format = str_replace( $dotzero, '', $n_format ).$suffix;
+    }
+ 
+    return $n_format;
+}
+        function prosentase($target,$total){
+            $hasil = round(($target/$total)*100);
+            return $hasil;
         }
         
         function load_menu($group=null){

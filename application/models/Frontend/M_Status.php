@@ -43,7 +43,7 @@ sum(
         return $q->result();
     }
     
-    public function rekap_status() {
+    public function rekap_status_tender() {
         $q = $this->db->query("SELECT date_part('year'::text, tst.pkt_tgl_buat) AS tahun,
 	sum(case
 		when tst.lls_ditutup_karena is null then 1
@@ -62,7 +62,30 @@ sum(
         END) AS ulang
    FROM taha_status_tender tst
   GROUP BY (date_part('year'::text, tst.pkt_tgl_buat))
-  ORDER BY (date_part('year'::text, tst.pkt_tgl_buat)) DESC;");
+  ORDER BY (date_part('year'::text, tst.pkt_tgl_buat)) ASC;");
+        return $q->result();
+    }
+    
+    public function rekap_status_nontender(){
+        $q = $this->db->query("SELECT date_part('year'::text, tst.pkt_tgl_buat) AS tahun,
+	sum(case
+		when tst.lls_ditutup_karena is null then 1
+		else 0
+		end
+	) as paket,
+    sum(
+        CASE
+            WHEN tst.lls_ditutup_karena IS NOT NULL THEN 1
+            ELSE 0
+        END) AS gagal,
+    sum(
+        CASE
+            WHEN tst.lls_diulang_karena IS NOT NULL THEN 1
+            ELSE 0
+        END) AS ulang
+   FROM taha_status_nontender tst
+  GROUP BY (date_part('year'::text, tst.pkt_tgl_buat))
+  ORDER BY (date_part('year'::text, tst.pkt_tgl_buat)) ASC;");
         return $q->result();
     }
 }

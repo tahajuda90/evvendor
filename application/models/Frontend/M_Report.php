@@ -41,7 +41,7 @@ left join kontrak on kontrak.id_paket = paket.id_paket '.$whr);
         }
         $q = $this->db->query('select sk.id_satker,sk.stk_nama,
 COUNT(p.id_paket) as jmlh_pkt,
-count(k.id_paket) as jmlh_kntrk,
+count(k.id_paket) as jmlh_kntrak,
 sum(p.pkt_pagu) as jmlh_pagu,
 sum(p.pkt_hps) as jmlh_hps,
 sum(k.nilai_kontrak) as jmlh_kntrk

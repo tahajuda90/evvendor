@@ -2995,6 +2995,14 @@ fieldset[disabled] .btn {
   padding-right: 30px;
 }
 
+.panel-layout .panel-cols-1 {
+  width: 100%;
+  float: left;
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .panel-layout.dashed-separator div[class^="panel-cols"]:after {
   content: "";
   border: 1px dashed #e9eef2;

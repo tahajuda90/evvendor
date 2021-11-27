@@ -36,108 +36,57 @@
 
         <div class="panel panel-tab">
             <div class="panel-heading">
-                <h3 class="panel-title">Campaign Result</h3>
+                <h3 class="panel-title">Live Data LPSE</h3>
                 <ul class="nav nav-tabs pull-right">
-                    <li class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-user-circle"></i> Social</a></li>
-                    <li><a href="#tab2" data-toggle="tab"><i class="fa fa-pie-chart"></i> Visits</a></li>
+                    <li class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-briefcase"></i> Jumlah Paket</a></li>
+                    <li><a href="#tab2" data-toggle="tab"> Jumlah Tender Gagal</a></li>
+                    <li><a href="#tab3" data-toggle="tab"> Jumlah Tender Ulang</a></li>
                 </ul>
             </div>
             <div class="panel-body">
                 <div class="tab-content no-padding">
                     <!-- tab 1 -->
                     <div class="tab-pane fade in active" id="tab1">
-                        <div class="top margin-bottom-50">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <div class="period font-13">
-                                        <span>Aug 05, 2017 - Aug 11, 2017</span>
-                                        <br>
-                                        <span class="previous text-muted">Jun 29, 2017 - Aug 4, 2017 (previous)</span>
-                                    </div>
-                                    <div class="margin-bottom-30 visible-xs"></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <select class="form-control">
-                                        <option>7 Days</option>
-                                        <option>1 Month</option>
-                                        <option>3 Months</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
                         <div class="panel-layout dashed-separator">
-                            <div class="panel-cols-2">
-                                <div class="widget-metric_9 text-center">
-                                    <span class="title">Engagement</span>
+                            <div class="panel-cols-1">
+                                <div id="rsm_paket" class="widget-metric_9 text-center">
+                                    <span class="title">Jumlah Tender</span>
                                     <span class="value">23,745</span>
-                                    <span class="percentage text-indicator-green"><i class="fa fa-sort-up icon-up"></i> 14.86%</span>
+                                    <span class="percentage text-indicator-red"><i class="fa fa-sort-down icon-down"></i> 14.86%</span>
                                     <span class="text-muted">vs. 15,443 (previous)</span>
-                                    <div class="inlinesparkline margin-top-50">26,68,35,38,53,95,114,87,114</div>
                                 </div>
-                            </div>
-                            <div class="panel-cols-2">
-                                <div class="widget-metric_9 text-center">
-                                    <span class="title">Page Reach</span>
-                                    <span class="value">793,148</span>
-                                    <span class="percentage text-indicator-red"><i class="fa fa-sort-down icon-down"></i> 8.13%</span>
-                                    <span class="text-muted">vs. 701,954 (previous)</span>
-                                    <div class="inlinesparkline margin-top-50">35,68,55,60,65,87,77,68,55</div>
-                                </div>
+                                <div  id="paket" class="margin-top-50"></div>
                             </div>
                         </div>
                     </div>
                     <!-- end tab 1 -->
-                    <!-- tab 3 -->
-                    <div class="tab-pane fade" id="tab2">
+                    <div class="tab-pane fade in active" id="tab2">
                         <div class="panel-layout dashed-separator">
-                            <div class="panel-cols-2">
-                                <h3 class="panel-content-title">Referrals</h3>
-                                <ul class="list-unstyled list-referrals">
-                                    <li>
-                                        <p>
-                                            <span class="value">3,454</span>
-                                            <span class="text-muted">visits from Facebook</span>
-                                        </p>
-                                        <div class="progress progress-xs progress-transparent custom-color-blue">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width:87%"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <span class="value">2,102</span>
-                                            <span class="text-muted">visits from Twitter</span>
-                                        </p>
-                                        <div class="progress progress-xs progress-transparent custom-color-purple">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100" style="width:34%"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <span class="value">2,874</span>
-                                            <span class="text-muted">visits from Affiliates</span>
-                                        </p>
-                                        <div class="progress progress-xs progress-transparent custom-color-green">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width:67%"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <span class="value">2,874</span>
-                                            <span class="text-muted">visits from Search</span>
-                                        </p>
-                                        <div class="progress progress-xs progress-transparent custom-color-yellow">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width:54%"></div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="panel-cols-2">
-                                <h3 class="panel-content-title">Traffic Sources</h3>
-                                <div id="traffic-sources-chart"></div>
+                            <div class="panel-cols-1">
+                                <div id="rsm_gagal" class="widget-metric_9 text-center">
+                                    <span class="title">Jumlah Tender</span>
+                                    <span class="value">23,745</span>
+                                    <span class="percentage text-indicator-red"><i class="fa fa-sort-down icon-down"></i> 14.86%</span>
+                                    <span class="text-muted">vs. 15,443 (previous)</span>
+                                </div>
+                                <div  id="gagal" class="margin-top-50"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- end tab 3 -->
+                    <!-- end tab 2 -->
+                    <div class="tab-pane fade in active" id="tab3">
+                        <div class="panel-layout dashed-separator">
+                            <div class="panel-cols-1">
+                                <div id="rsm_ulang" class="widget-metric_9 text-center">
+                                    <span class="title">Jumlah Tender</span>
+                                    <span class="value">23,745</span>
+                                    <span class="percentage text-indicator-red"><i class="fa fa-sort-down icon-down"></i> 14.86%</span>
+                                    <span class="text-muted">vs. 15,443 (previous)</span>
+                                </div>
+                                <div  id="ulang" class="margin-top-50"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,8 +105,10 @@
                 <tr>
                     <th>Nama Satker</th>
                     <th>Jumlah Paket</th>
-                    <th>Jumlah Pagu</th>
-                    <th>Jumlah HPS</th>
+                    <th>Realisasi Kontrak</th>
+                    <th>Pagu</th>
+                    <th>HPS</th>
+                    <th>Nilai Kontrak</th>
                     <th>Efisiensi</th>
                 </tr>
             </thead>
@@ -167,9 +118,11 @@
                 <tr>
                     <td><?=$stk->stk_nama?></td>
                     <td><?=$stk->jmlh_pkt?></td>
-                    <td><?=rupiah($stk->jmlh_pagu)?></td>
-                    <td><?=rupiah($stk->jmlh_hps)?></td>
-                    <td><b><?=prosentase(($stk->jmlh_pagu-$stk->jmlh_hps),$stk->jmlh_pagu)?>%</b></td>
+                    <td><?=$stk->jmlh_kntrak?></td>
+                    <td>Rp.<?= number_format_short($stk->jmlh_pagu)?></td>
+                    <td>Rp.<?= number_format_short($stk->jmlh_hps)?></td>
+                    <td>Rp.<?= number_format_short($stk->jmlh_kntrk)?></td>
+                    <td><b><?=$stk->jmlh_kntrk > 0 ? prosentase(($stk->jmlh_pagu-$stk->jmlh_kntrk),$stk->jmlh_pagu):0?>%</b></td>
                 </tr>    
                 <?php 
                     }
@@ -181,10 +134,10 @@
 </div>
 
 <script src="<?= base_url('assets/frontend')?>/vendor/jquery-sparkline/js/jquery.sparkline.min.js"></script>
-<script src="<?= base_url('assets/frontend')?>/vendor/Flot/jquery.flot.js"></script>
+<!--<script src="<?= base_url('assets/frontend')?>/vendor/Flot/jquery.flot.js"></script>
 <script src="<?= base_url('assets/frontend')?>/vendor/Flot/jquery.flot.resize.js"></script>
 <script src="<?= base_url('assets/frontend')?>/vendor/Flot/jquery.flot.pie.js"></script>
-<script src="<?= base_url('assets/frontend')?>/vendor/flot.tooltip/jquery.flot.tooltip.js"></script>
+<script src="<?= base_url('assets/frontend')?>/vendor/flot.tooltip/jquery.flot.tooltip.js"></script>-->
 <script src="<?= base_url('assets/frontend')?>/vendor/datatables/js-main/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('assets/frontend')?>/vendor/datatables/js-bootstrap/dataTables.bootstrap.min.js"></script>
 
@@ -194,72 +147,57 @@ $( document ).ready(function() {
     {
             sDom: "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>"
     });
-    
-    var data = [
-					{
-						label: "Social",
-						data: 45
-					},
-					{
-						label: "Referral",
-						data: 26
-					},
-					{
-						label: "Organic",
-						data: 14
-					},
-					{
-						label: "Others",
-						data: 15
-					}];
-					$.plot('#traffic-sources-chart', data,
-					{
-						series:
-						{
-							pie:
-							{
-								show: true,
-								innerRadius: 0.5,
-								stroke:
-								{
-									width: 4,
-									color: "#F9F9F9"
-								},
-								label:
-								{
-									show: true,
-									radius: 3 / 4,
-									formatter: donutLabelFormatter,
-								},
-							},
-						},
-						legend:
-						{
-							backgroundOpacity: 0
-						},
-						colors: ["#FF4402", "#AB7DF6", "#F3BB23", "#20B2AA"],
-					});
-                                        function donutLabelFormatter(label, series)
-			{
-				return "<div class=\"flot-donut-label\">" + Math.round(series.percent) + "%</div>";
-			}
-                        var sparklineParams = {
-				width: '100%',
-				height: '70px',
-				lineWidth: '2',
-				lineColor: 'rgba(0,56,255,0.30)',
-				fillColor: 'rgba(0,56,255,0.15)',
-				spotRadius: '2',
-				highlightLineColor: 'rgba(0,56,255,0.30)',
-				highlightSpotColor: 'rgba(0,56,255,0.30)',
-				spotColor: '',
-				minSpotColor: false,
-				maxSpotColor: false,
-				disableInteraction: false,
-				tooltipClassname: 'jqstooltip flotTip',
-				normalRangeMin: 0,
-				normalRangeMin: 100
-			};
-                        $('.inlinesparkline').sparkline('html', sparklineParams);
+
+        var sparklineParams = {
+                width: '100%',
+                height: '70px',
+                lineWidth: '2',
+                lineColor: 'rgba(0,56,255,0.30)',
+                fillColor: 'rgba(0,56,255,0.15)',
+                spotRadius: '2',
+                highlightLineColor: 'rgba(0,56,255,0.30)',
+                highlightSpotColor: 'rgba(0,56,255,0.30)',
+                spotColor: '',
+                minSpotColor: false,
+                maxSpotColor: false,
+                disableInteraction: false,
+                tooltipClassname: 'jqstooltip flotTip',
+                normalRangeMin: 0
+        };
+        $.ajax({
+            type:"GET",
+            dataType: 'json',
+            delay: 250,
+            url:"<?= $url_grafik?>",
+            success:function(data){
+                $('#paket').sparkline(data.paket, sparklineParams);
+                $('#gagal').sparkline(data.gagal, sparklineParams);
+                $('#ulang').sparkline(data.gagal, sparklineParams);
+            }
+        });
+        
+        $.ajax({
+            type:"GET",
+            dataType:'json',
+            delay:250,
+            url:'<?=$url_resume?>',
+            success:function(data){
+                $('#rsm_paket').html('<span class="title">Jumlah Tender '+data.paket.tahun+'</span><span class="value">'+data.paket.jmlh+' Paket</span>'+tanda(data.paket.jmlh,data.paket.sebelum)+'</i> '+data.paket.prosentase+'% </span><span class="text-muted">vs. '+data.paket.sebelum+' Paket (previous)</span>');
+                $('#rsm_gagal').html('<span class="title">Jumlah Tender Gagal '+data.gagal.tahun+'</span><span class="value">'+data.gagal.jmlh+' Paket</span>'+tanda(data.gagal.jmlh,data.gagal.sebelum)+'</i> '+data.gagal.prosentase+'% </span><span class="text-muted">vs. '+data.gagal.sebelum+' Paket (previous)</span>');
+                $('#rsm_ulang').html('<span class="title">Jumlah Tender Gagal '+data.ulang.tahun+'</span><span class="value">'+data.ulang.jmlh+' Paket</span>'+tanda(data.ulang.jmlh,data.ulang.sebelum)+'</i> '+data.ulang.prosentase+'% </span><span class="text-muted">vs. '+data.ulang.sebelum+' Paket (previous)</span>');
+                console.log(data.paket);
+            }
+        });
+        
+        function tanda(a,b){
+            if(a>b){
+                return '<span class="percentage text-indicator-green"><i class="fa fa-sort-up icon-up">';
+            }else if(a<b){
+                return '<span class="percentage text-indicator-red"><i class="fa fa-sort-down icon-down">';
+            }else{
+                return '<span class="percentage text-indicator-primary"><i class="fa fa-sort">';
+            }
+        }
+                        
 });
 </script>

@@ -49,9 +49,11 @@
                     </div>
                     <div class="navbar-collapse collapse" id="main-nav">
                         <ul class="nav navbar-nav">
-                            <li><a class="active" href="index.html"><span>Tender</span></a></li>
-                            <li><a href="index.html"><span>Non-Tender</span></a></li>
-                            <li><a href="index.html"><span>Rekanan</span></a></li>
+                            <?php
+                            foreach($menu as $menu){
+                                echo '<li><a '.($menu['active']?'class="active"':'').' href="'.$menu['url'].'"><span>'.$menu['nama'].'</span></a></li>';
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -66,7 +68,7 @@
             <div class="clearfix"></div>
             <footer>
                 <div class="container-fluid">
-                    <p class="copyright">&copy; 2021. All Rights Reserved.</p>
+                    <p class="copyright">&copy; V.1.0. Sistem Evaluasi Monitoring Pengadaan Barang/Jasa.</p>
                 </div>
             </footer>
         </div>

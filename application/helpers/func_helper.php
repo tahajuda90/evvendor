@@ -114,12 +114,18 @@
  
     return $n_format;
 }
-        function prosentase($target,$total){
-            $hasil = round(($target/$total)*100);
-            return $hasil;
-        }
-        
-        function load_menu($group=null){
+function prosentase($target, $total) {
+    $hasil = round(($target / $total) * 100);
+    return $hasil;
+}
+
+function filterArrayByKeyValue($array, $key, $keyValue) {
+    return array_filter($array, function ($value) use ($key, $keyValue) {
+        return $value[$key] == $keyValue;
+    });
+}
+
+function load_menu($group=null){
             $menu = [];
             
             $menu['dashboard']['menu']='Dashboard';

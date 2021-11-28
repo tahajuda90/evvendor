@@ -1,9 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'C_Dashboard/index';
+$route['default_controller'] = 'C_Home/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['tender'] = 'C_Home/index';
+$route['nontender'] = 'C_Home/nontender';
+$route['rangking'] = 'C_Home/rangking';
 
 $route['group'] = 'C_IndikatorNilai/index';
 $route['group/indikator/(:any)'] = 'C_IndikatorNilai/index_ind/$1';

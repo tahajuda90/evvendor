@@ -8,11 +8,12 @@ class Api extends CI_Controller{
     }
     
         
-    public function rekap_grafik(){
+    public function rekap_grafik($tahun=null){
         $hasil = array(
-            'paket' => array_map('intval',array_column($this->M_Status->rekap_status_tender(), 'paket')),
-            'ulang' => array_map('intval',array_column($this->M_Status->rekap_status_tender(), 'ulang')),
-            'gagal' => array_map('intval',array_column($this->M_Status->rekap_status_tender(), 'gagal')),
+            'tahun' =>array_column($this->M_Status->rekap_status_tender($tahun), 'tahun'),
+            'paket' => array_map('intval',array_column($this->M_Status->rekap_status_tender($tahun), 'paket')),
+            'ulang' => array_map('intval',array_column($this->M_Status->rekap_status_tender($tahun), 'ulang')),
+            'gagal' => array_map('intval',array_column($this->M_Status->rekap_status_tender($tahun), 'gagal')),
         );
         echo json_encode($hasil);
     }
@@ -45,11 +46,12 @@ class Api extends CI_Controller{
         print_r(json_encode($hasil));
     }
     
-    public function rekap_grafik_non(){
+    public function rekap_grafik_non($tahun=null){
         $hasil = array(
-            'paket' => array_map('intval',array_column($this->M_Status->rekap_status_nontender(), 'paket')),
-            'ulang' => array_map('intval',array_column($this->M_Status->rekap_status_nontender(), 'ulang')),
-            'gagal' => array_map('intval',array_column($this->M_Status->rekap_status_nontender(), 'gagal')),
+            'tahun' => array_column($this->M_Status->rekap_status_nontender($tahun), 'tahun'),
+            'paket' => array_map('intval',array_column($this->M_Status->rekap_status_nontender($tahun), 'paket')),
+            'ulang' => array_map('intval',array_column($this->M_Status->rekap_status_nontender($tahun), 'ulang')),
+            'gagal' => array_map('intval',array_column($this->M_Status->rekap_status_nontender($tahun), 'gagal')),
         );
         echo json_encode($hasil);
     }

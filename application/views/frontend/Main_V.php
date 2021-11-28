@@ -55,6 +55,19 @@
                             }
                             ?>
                         </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span>Tahun</span> <i class="ti-angle-down icon-submenu"></i></a>
+                                <ul class="dropdown-menu logged-user-menu">
+                                    <?php
+                                        foreach($tahun as $th){
+                                            echo '<li><a href="'.array_column(filterArrayByKeyValue($this->menu, 'active', true),'url')[0].'?tahun='.$th->tahun.'"><span>'.$th->tahun.'</span></a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>

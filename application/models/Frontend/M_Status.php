@@ -43,8 +43,15 @@ sum(
         return $q->result();
     }
     
-    public function rekap_status_tender() {
-        $q = $this->db->query("SELECT date_part('year'::text, tst.pkt_tgl_buat) AS tahun,
+    public function rekap_status_tender($tahun = null) {
+        if($tahun){
+            $param = "month";
+            $whr = "where date_part('year'::text, tst.pkt_tgl_buat) = ".$tahun;
+        }else{
+            $param = "year";
+            $whr = "";
+        }
+        $q = $this->db->query("SELECT date_part('".$param."'::text, tst.pkt_tgl_buat) AS tahun,
 	sum(case
 		when tst.lls_ditutup_karena is null then 1
 		else 0
@@ -61,13 +68,21 @@ sum(
             ELSE 0
         END) AS ulang
    FROM taha_status_tender tst
-  GROUP BY (date_part('year'::text, tst.pkt_tgl_buat))
-  ORDER BY (date_part('year'::text, tst.pkt_tgl_buat)) ASC;");
+   ".$whr."
+  GROUP BY (date_part('".$param."'::text, tst.pkt_tgl_buat))
+  ORDER BY (date_part('".$param."'::text, tst.pkt_tgl_buat)) ASC;");
         return $q->result();
     }
     
-    public function rekap_status_nontender(){
-        $q = $this->db->query("SELECT date_part('year'::text, tst.pkt_tgl_buat) AS tahun,
+    public function rekap_status_nontender($tahun = null){
+        if($tahun){
+            $param = "month";
+            $whr = "where date_part('year'::text, tst.pkt_tgl_buat) = ".$tahun;
+        }else{
+            $param = "year";
+            $whr = "";
+        }
+        $q = $this->db->query("SELECT date_part('".$param."'::text, tst.pkt_tgl_buat) AS tahun,
 	sum(case
 		when tst.lls_ditutup_karena is null then 1
 		else 0
@@ -84,8 +99,9 @@ sum(
             ELSE 0
         END) AS ulang
    FROM taha_status_nontender tst
-  GROUP BY (date_part('year'::text, tst.pkt_tgl_buat))
-  ORDER BY (date_part('year'::text, tst.pkt_tgl_buat)) ASC;");
+   ".$whr."
+  GROUP BY (date_part('".$param."'::text, tst.pkt_tgl_buat))
+  ORDER BY (date_part('".$param."'::text, tst.pkt_tgl_buat)) ASC;");
         return $q->result();
     }
 }

@@ -18,7 +18,7 @@
                             <td><?=$idktr->nama_group?></td>
                             <td><?=$idktr->nama_indikator?></td>
                             <td><?=$idktr->bobot?></td>
-                            <td><input class="form-control" name="nilai_<?=$idktr->id_detail?>" type="number" value="<?=$idktr->nilai?>"/></td>
+                            <td><input class="form-control" name="nilai_<?=$idktr->id_detail?>" type="number" step="0.01" value="<?=$idktr->nilai?>"/></td>
                         </tr>
         <?php
      $no++;} }else{

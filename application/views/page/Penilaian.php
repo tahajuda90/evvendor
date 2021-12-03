@@ -44,10 +44,10 @@
                                 if( $pkt->id_kualifikasi != null){
                                 if($pkt->total_nilai == null){
                                     echo '<a type="button" href="'.base_url('penilaian/create/'.$pkt->id_kontrak).'" class="btn btn-sm btn-primary">Buat Penilaian</a>';
-                                    echo '<a type="button" href="'.base_url('penilaian/create/'.$pkt->id_kontrak).'" class="btn btn-sm btn-secondary"><i class="fa fa-print"></i></a>';
+                                    echo '<a type="button" href="#" class="btn btn-sm btn-secondary"><i class="fa fa-print"></i></a>';
                                 }else{
                                     echo '<a type="button" href="'.base_url('penilaian/update/'.$pkt->id_kontrak).'" class="btn btn-sm btn-warning">Edit Penilaian</a>';
-                                    echo '<a type="button" href="'.base_url('penilaian/update/'.$pkt->id_kontrak).'" class="btn btn-sm btn-secondary"><i class="fa fa-print"></i></a>';
+                                    echo '<a type="button" href="#" class="btn btn-sm btn-secondary"><i class="fa fa-print"></i></a>';
                                 }} ?></td>
                             </tr>
                     

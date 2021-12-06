@@ -337,7 +337,7 @@ $( document ).ready(function() {
             success:function(data){
                 $('#rsm_paket').html('<span class="title">Jumlah Tender '+data.paket.tahun+'</span><span class="value">'+data.paket.jmlh+' Paket</span>'+tanda(data.paket.jmlh,data.paket.sebelum)+'</i> '+data.paket.prosentase+'% </span><span class="text-muted">vs. '+data.paket.sebelum+' Paket (previous)</span>');
                 $('#rsm_gagal').html('<span class="title">Jumlah Tender Gagal '+data.gagal.tahun+'</span><span class="value">'+data.gagal.jmlh+' Paket</span>'+tanda(data.gagal.jmlh,data.gagal.sebelum)+'</i> '+data.gagal.prosentase+'% </span><span class="text-muted">vs. '+data.gagal.sebelum+' Paket (previous)</span>');
-                $('#rsm_ulang').html('<span class="title">Jumlah Tender Gagal '+data.ulang.tahun+'</span><span class="value">'+data.ulang.jmlh+' Paket</span>'+tanda(data.ulang.jmlh,data.ulang.sebelum)+'</i> '+data.ulang.prosentase+'% </span><span class="text-muted">vs. '+data.ulang.sebelum+' Paket (previous)</span>');
+                $('#rsm_ulang').html('<span class="title">Jumlah Tender Ulang '+data.ulang.tahun+'</span><span class="value">'+data.ulang.jmlh+' Paket</span>'+tanda(data.ulang.jmlh,data.ulang.sebelum)+'</i> '+data.ulang.prosentase+'% </span><span class="text-muted">vs. '+data.ulang.sebelum+' Paket (previous)</span>');
                 console.log(data.paket);
             }
         });

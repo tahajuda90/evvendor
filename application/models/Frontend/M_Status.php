@@ -104,4 +104,16 @@ sum(
   ORDER BY (date_part('".$param."'::text, tst.pkt_tgl_buat)) ASC;");
         return $q->result();
     }
+    
+    public function progres($tahun = null){
+        $whr = '';
+        if(isset($tahun)){
+            $whr.= " where date_part('year'::text, pkt_tgl_buat) = ".$tahun;
+        }
+        $tdr_oke = $this->db->query('select count(*)from taha_paket_tender tpt '.$whr)->row()->count;
+        $tdr = $this->db->query('select count(*) from public.paket p '.$whr)->row()->count;
+        $ntdr_oke = $this->db->query('select count(*) from taha_paket_nontender tpn '.$whr)->row()->count;
+        $ntdr = $this->db->query('select count(*) from ekontrak.paket p'.$whr)->row()->count;
+        return array('tdr_sls'=>$tdr_oke,'tdr'=>$tdr,'ntdr_sls'=>$ntdr_oke,'ntdr'=>$ntdr);
+    }
 }

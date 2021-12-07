@@ -83,4 +83,8 @@ class Api extends CI_Controller{
         );
         print_r(json_encode($hasil));
     }
+    
+    public function coba($tahun = null){
+        print_r($this->M_Status->progres($tahun));
+    }
 }

@@ -180,7 +180,13 @@ class C_PaketKontrak extends CI_Controller{
         }
     }
     
-//    public function delete_ktr(){}
+    public function delete_ktr($id){
+        if($this->M_Kontrak->delete($id)){
+            redirect('paket','refresh');
+        }else{
+            redirect('paket','refresh');
+        }
+    }
     
     public function assign_penyedia(){
         $idkntr = $this->input->get('id_kontrak');

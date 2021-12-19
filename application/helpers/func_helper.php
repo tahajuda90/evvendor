@@ -115,7 +115,10 @@
     return $n_format;
 }
 function prosentase($target, $total) {
-    $hasil = round(($target / $total) * 100);
+    $hasil = 0;
+    if($total > 0){
+        $hasil = round(($target / $total) * 100); 
+    }
     return $hasil;
 }
 

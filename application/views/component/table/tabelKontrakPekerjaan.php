@@ -23,6 +23,7 @@
     </div>
 </div>
 <div class="row">
+    <a class="btn btn-sm btn-primary pull-right" type="button" href=""><i class="fa fa-download"></i>Tarik Kontrak</a>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -58,6 +59,7 @@
                 </td>
                 <td>
                     <a class="btn btn-sm btn-warning" href="<?= base_url('paket/kontrak/update/'.$kntr->id_kontrak)?>">Edit</a>
+                    <?=$kntr->pkt_id == null ? '<a class="btn btn-sm btn-danger" href="'.base_url('C_PaketKontrak/delete_ktr/'.$kntr->id_kontrak).'">Hapus</a>':''?>
                 </td>
             </tr>
             

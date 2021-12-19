@@ -36,6 +36,7 @@ class C_Integrasi extends CI_Controller{
     
     public function bentukU_save(){
         if($this->M_IBentukU->is_online()){
+            $this->M_IBentukU->save();
             redirect('bntkusaha');
         }else{
             show_404();

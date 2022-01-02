@@ -55,7 +55,7 @@
                 </td>
                 <td><?= rupiah($kntr->nilai_kontrak)?></td>
                 <td>Mulai : <?= fdateindo($kntr->kontrak_mulai) ?><br>
-                Akhir : <?= fdateindo($kntr->kontrak_mulai) ?> <br>
+                Akhir : <?= fdateindo($kntr->kontrak_akhir) ?> <br>
                 </td>
                 <td>
                     <a class="btn btn-sm btn-warning" href="<?= base_url('paket/kontrak/update/'.$kntr->id_kontrak)?>">Edit</a>

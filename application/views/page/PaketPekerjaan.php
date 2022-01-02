@@ -56,7 +56,7 @@
     $('#tarik').click(function(){
         console.log($('#lls_id').val());
         var llg = $('#lls_id').val();
-        $.post("<?=base_url('C_Integrasi/paket')?>",{lls_id:llg},function(result){
+        $.get("<?=base_url('C_Integrasi/paket')?>",{lls_id:llg},function(result){
             $('.modal-content').html(result);
             //console.log(result);
         });

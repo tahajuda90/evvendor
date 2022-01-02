@@ -44,7 +44,7 @@ class C_Integrasi extends CI_Controller{
     }
     
     public function paket(){
-        $llg = $this->input->post('lls_id');
+        $llg = $this->input->get('lls_id');
         
         if ($this->M_IPaket->is_online()) {
             $pkt = $this->M_IPaket->by_id('lls_id',$llg);
@@ -309,6 +309,18 @@ class C_Integrasi extends CI_Controller{
         }else{
             redirect('rekanan/detail/prl/'.$rkn[0]->id_penyedia);
         }
+    }
+    
+    public function pkt_lpse($stts){
+        $this->session->set_userdata('last_url',current_url());
+        if($this->M_IRprl->is_online()){
+            $data['pkt'] = $this->M_IPaket->cond('status',$stts);
+            $data['title'] = $stts == 0 ? 'Tender':'Non-Tender';
+            $data['page'] = 'page/PaketLpse';
+            $this->load->view('Main_v',$data);
+        }else{
+            redirect('home');
+        }        
     }
 }
 

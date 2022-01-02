@@ -49,6 +49,10 @@
 	function fdateformat($format,$x){
 		return date($format,strtotime($x));
 	}
+        
+        function fdatetahun($x){
+            return date("Y", strtotime($x));
+        }
 	
 	function diffdate($datetime,$fix=null, $full = false) {
 		if($fix==null)$fix=date('Y-m-d H:i:s');
@@ -152,6 +156,11 @@ function load_menu($group=null){
             $menu['master']['sub']['bntkusaha']='Bentuk Usaha';
             $menu['master']['sub']['metode']='Metode Pemilihan';
             $menu['master']['sub']['paket']='Paket Pekerjaan';
+            
+            $menu['lpse']['menu']='Data Live LPSE';
+            $menu['lpse']['ikon'] = '<i class="app-menu__icon fa fa-bank"></i>';
+            $menu['lpse']['sub']['tender']='Paket Tender';
+            $menu['lpse']['sub']['nontender']='Paket Non-Tender';
             
             $menu['perusahaan']['menu']='Perusahaan';
             $menu['perusahaan']['ikon'] = '<i class="app-menu__icon fa fa-building-o"></i>';

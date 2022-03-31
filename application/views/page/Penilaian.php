@@ -8,6 +8,46 @@
         <li class="breadcrumb-item active">Paket Pekerjaan</li>
     </ul>
 </div>
+<?php if(empty($this->ion_auth->get_users_department($this->ion_auth->get_user_id())->result())){
+   ?>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <h3 class="tile-title">Rekap Penilaian</h3>
+            <div class="tile-body">
+                <form method="get" action="<?= base_url('C_Skoring/cetak')?>" class="row">
+                    <div class="col-md-7 form-group">
+                        <select class="form-control" name="satker" id="satker">
+                            <option></option>
+                            <?php
+                            foreach ($satker as $stk) {
+                                echo '<option value="' . $stk->id_satker . '">' .$stk->stk_nama.'</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class=" col-md-3 form-group">
+                        <select class="form-control" name="tahun" id="tahun">
+                            <option></option>
+                            <?php
+                            foreach ($tahun as $thn) {
+                                echo '<option value="' . $thn->tahun . '">' .$thn->tahun.'</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-md-2 form-group text-center">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-download"></i>Rekap</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+}
+?>
 <div class="row">
     <div class="col-md-12">
         <div class="tile">
@@ -61,11 +101,20 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/select2.min.js"></script>
 <script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?= base_url('assets/vali/')?>js/plugins/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
+    $('#satker').select2({
+        placeholder:"Pilih Satuan Kerja",
+        allowClear: true
+    });
+    $('#tahun').select2({
+        placeholder:"Pilih Tahun",
+        allowClear: true
+    });
+        
     $('#sampleTable').DataTable({
         "order": [[ 0, "desc" ]]
     });

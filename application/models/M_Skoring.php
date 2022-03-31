@@ -9,7 +9,7 @@ class M_Skoring extends CI_Model{
     
     function get_paket(){
         $dep = $this->ion_auth->get_users_department($this->ion_auth->get_user_id())->row();
-        $this->db->select('kontrak.id_kontrak,rekanan.rkn_nama,penilaian.total_nilai,penilaian.rating_nilai,satuan_kerja.stk_nama');
+        $this->db->select('kontrak.id_kontrak,rekanan.rkn_nama,kontrak.nilai_kontrak,penilaian.total_nilai,penilaian.rating_nilai,satuan_kerja.stk_nama');
         $this->M_Paket->child($this->M_Paket->table, $this->M_Kontrak->table, $this->M_Paket->primary);
         $this->db->where($this->M_Kontrak->table.'.id_kontrak IS NOT NULL AND '.$this->M_Kontrak->table.'.id_rekanan IS NOT NULL');
         $this->db->join($this->M_Satker->table,$this->M_Satker->table.'.id_satker = '.$this->M_Paket->table.'.id_satker','LEFT');

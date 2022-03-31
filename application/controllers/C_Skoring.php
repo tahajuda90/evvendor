@@ -11,6 +11,8 @@ class C_Skoring extends CI_Controller{
     }
     
     public function index(){
+        $data['tahun'] = $this->M_Paket->get_tahun();
+        $data['satker'] = $this->M_Paket->get_satker();
         $data['pkt'] = $this->M_Skoring->get_paket();
         $data['kls'] = $this->M_KlasP->get_all();
         $data['page'] = 'page/Penilaian';
@@ -76,6 +78,12 @@ class C_Skoring extends CI_Controller{
         if($rdrct){
             redirect('penilaian');
         }
+    }
+    
+    public function cetak(){
+//        print_r($this->input->get());
+        $data['pkt'] = $this->M_Skoring->get_paket();
+        $this->load->view('print/P_Skoring',$data);
     }
 }
 

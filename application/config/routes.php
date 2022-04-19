@@ -38,8 +38,8 @@ $route['paket/kontrak/create/(:any)'] = 'C_PaketKontrak/create_ktr/$1';
 $route['paket/update/(:any)'] = 'C_PaketKontrak/update/$1';
 $route['paket/kontrak/update/(:any)'] = 'C_PaketKontrak/update_ktr/$1';
 
-$route['live/tender'] = 'C_Integrasi/pkt_lpse/0';
-$route['live/nontender'] = 'C_Integrasi/pkt_lpse/1';
+$route['tdr'] = 'C_Integrasi/pkt_lpse/0';
+$route['nontdr'] = 'C_Integrasi/pkt_lpse/1';
 
 $route['bntkusaha'] = 'C_BtUsaha/index';
 $route['bntkusaha/update/(:any)'] = 'C_BtUsaha/update/$1';

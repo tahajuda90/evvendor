@@ -159,8 +159,8 @@ function load_menu($group=null){
             
             $menu['lpse']['menu']='Data Live LPSE';
             $menu['lpse']['ikon'] = '<i class="app-menu__icon fa fa-bank"></i>';
-            $menu['lpse']['sub']['live/tender']='Paket Tender';
-            $menu['lpse']['sub']['live/nontender']='Paket Non-Tender';
+            $menu['lpse']['sub']['tdr']='Paket Tender';
+            $menu['lpse']['sub']['nontdr']='Paket Non-Tender';
             
             $menu['perusahaan']['menu']='Perusahaan';
             $menu['perusahaan']['ikon'] = '<i class="app-menu__icon fa fa-building-o"></i>';

@@ -76,7 +76,7 @@ class MY_Integrate extends CI_Model{
     
     public function __construct() {
         parent::__construct();
-        $this->db = $this->load->database('postgre://postgres:3april2014@localhost/simponi2', TRUE);
+        $this->db = $this->load->database('postgre://postgres:3april2014@localhost/simponi2022', TRUE);
     }
     
     function all()

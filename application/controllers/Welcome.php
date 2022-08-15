@@ -22,6 +22,6 @@ class Welcome extends CI_Controller {
             
 		//$this->load->view('welcome_message');
 //                print_r(load_menu()['penilaian']);
-        print_r(fdatetodb('Oct 11, 2021'));
-	}
+        var_dump(strpos('2022-06-28', ' ') );
+    }
 }

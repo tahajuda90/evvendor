@@ -21,7 +21,7 @@
                 <td>Pagu : <?= rupiah($pkt->pkt_pagu)?><br>HPS : <?= rupiah($pkt->pkt_hps)?></td>
                 <td><?= fdatetahun($pkt->pkt_tgl_buat)?></td>
                 <td><?= $pkt->stk_nama?></td>
-                <td><?= ($pkt->status == 1 ? '<span class="badge badge-pill badge-info">Non-Tender</span>' : '<span class="badge badge-pill badge-info">Tender/Seleksi</span>')?></td>
+                <td><?= ($title != 'Tender' ? '<span class="badge badge-pill badge-info">Non-Tender</span>' : '<span class="badge badge-pill badge-info">Tender/Seleksi</span>')?></td>
                 <td><a type="button" data-toggle="modal" class="btn btn-primary btn-sm openBtn" href="<?= base_url('C_Integrasi/paket?lls_id='.$pkt->lls_id)?>"><i class="fa fa-download"></i> Tarik Data</a></td>
             </tr>
             <?php        

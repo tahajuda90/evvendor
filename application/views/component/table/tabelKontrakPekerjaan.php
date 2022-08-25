@@ -23,7 +23,11 @@
     </div>
 </div>
 <div class="row">
-    <a class="btn btn-sm btn-primary pull-right" type="button" href=""><i class="fa fa-download"></i>Tarik Kontrak</a>
+    <?php if($pkt->is_nontender == 0){
+        echo '<a class="btn btn-sm btn-primary pull-right" type="button" href="'. base_url('C_Integrasi/kontrak_save/').$pkt->id_paket.'"><i class="fa fa-download"></i>Tarik Kontrak</a>';
+    } else {
+        echo '<a class="btn btn-sm btn-primary pull-right" type="button" href="'. base_url('C_Integrasi/kontraknon_save/').$pkt->id_paket.'"><i class="fa fa-download"></i>Tarik Kontrak</a>';
+    } ?>
     <table class="table table-bordered">
         <thead>
             <tr>

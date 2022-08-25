@@ -24,7 +24,12 @@ class M_IKontrak extends MY_Integrate{
             'kontrak_mulai'=> $kontr->kontrak_mulai,
             'kontrak_akhir'=> $kontr->kontrak_akhir
         );
-            return $this->M_Kontrak->insert($data,array('id_paket'=>$pkt->id_paket,'lls_id'=>$kontr->lls_id));
+            if($this->M_Kontrak->insert($data,array('id_paket'=>$pkt->id_paket,'lls_id'=>$kontr->lls_id))){
+                return true;
+            }else{
+                $kntrk = $this->M_Kontrak->get_cond(array('id_paket'=>$pkt->id_paket));
+                return $this->M_Kontrak->update($kntrk[0]->id_kontrak,$data);
+            }
         }else{
             return false;
         }

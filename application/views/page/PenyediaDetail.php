@@ -1,7 +1,7 @@
 <div class="app-title">
     <div>
         <h1><?=$rekanan->rkn_nama?></h1>
-        <p>Detail Informasi Penyedia</p>
+        <p>Detail Informasi Penyedia</p>        
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><a href="<?= site_url('home')?>"><i class="fa fa-home fa-lg"></i></a></li>
@@ -15,14 +15,20 @@
             <h3 class="tile-title">Detail Informasi Penyedia</h3>
             <div class="tile-body">
                 <div class="row">
+                    <div class="col-12">
+                        <a class="btn btn-warning btn-sm pull-right" target="_blank" href="https://inaproc.id/daftar-hitam?provinsi=&keyword=<?=$rekanan->rkn_npwp?>" type="button"><i class="fa fa-check"></i>Check Blacklist</a>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-6">
                         <b>Bentuk Usaha :</b> <?= ucfirst($rekanan->btu_nama) ?><br>
                         <b>Nama :</b> <?= ucfirst($rekanan->rkn_nama) ?><br>
                         <b>NPWP :</b> <?= ucfirst($rekanan->rkn_npwp) ?><br>
                         <b>No PKP :</b> <?= ucfirst($rekanan->rkn_pkp) ?><br>
-                        <b>Asal Kota/Kabupaten :</b> <?= ucfirst($rekanan->kbp) ?><br>
+                        <b>Modal :</b> <?= ucfirst($rekanan->modal) ?><br>
                     </div>
                     <div class="col-6">
+                        <b>Asal Kota/Kabupaten :</b> <?= ucfirst($rekanan->kbp) ?><br>
                         <b>Kontak :</b> <p><?=$rekanan->rkn_alamat?>, Kode Pos : <?=$rekanan->rkn_kodepos?> <br> Telepon : <?=$rekanan->rkn_telepon?> <br> Email : <?=$rekanan->rkn_email?></p>
                     </div>
                 </div>

@@ -30,6 +30,7 @@ class C_Rekanan extends CI_Controller{
         $data['rkn_pkp']= set_value('rkn_pkp');
         $data['rkn_telepon']= set_value('rkn_telepon');
         $data['rkn_email']= set_value('rkn_email');
+        $data['modal'] = set_value('modal');
         $data['kbp']= set_value('kbp');
         $data['button'] = 'Tambah';
         $this->load->view('Main_v',$data);
@@ -45,7 +46,8 @@ class C_Rekanan extends CI_Controller{
             'rkn_pkp'=> $this->input->post('rkn_pkp',TRUE),
             'rkn_telepon'=> $this->input->post('rkn_telepon',TRUE),
             'rkn_email'=> $this->input->post('rkn_email',TRUE),
-            'kbp'=> $this->input->post('kbp',TRUE)
+            'kbp'=> $this->input->post('kbp',TRUE),
+            'modal'=> $this->input->post('modal',TRUE)
         );
         if($this->M_Rekanan->insert($data,array('rkn_npwp'=>$data['rkn_npwp']))){
             redirect('rekanan');
@@ -69,6 +71,7 @@ class C_Rekanan extends CI_Controller{
         $data['rkn_telepon']= $rkn->rkn_telepon;
         $data['rkn_email']= $rkn->rkn_email;
         $data['kbp']= $rkn->kbp;
+        $data['modal']= $rkn->modal;
         $data['button'] = 'Update';
         $this->load->view('Main_v',$data);
     }
@@ -84,7 +87,8 @@ class C_Rekanan extends CI_Controller{
             'rkn_pkp'=> $this->input->post('rkn_pkp',TRUE),
             'rkn_telepon'=> $this->input->post('rkn_telepon',TRUE),
             'rkn_email'=> $this->input->post('rkn_email',TRUE),
-            'kbp'=> $this->input->post('kbp',TRUE)
+            'kbp'=> $this->input->post('kbp',TRUE),
+            'modal'=> $this->input->post('modal',TRUE)
         );
         if($this->M_Rekanan->update($msk->id_rekanan,$data)){
             redirect('rekanan');

@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/vali/')?>css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Login - Sistem Evaluasi & Monitoring Pengadaan Barang/Jasa</title>
+    <!--<title>Login - Sistem Evaluasi & Monitoring Pengadaan Barang/Jasa</title>-->
+    <title>Login - Sistem Evaluasi Penyedia Pengadaan Barang/Jasa</title>
   </head>
   <body>
     <section class="material-half-bg">
@@ -23,7 +24,7 @@
               </div>
           <?php endif ?>        
       <div class="logo">
-        <h1>Si-EMon Barjas</h1>
+        <h1>Si Evaluasi Pengadaan</h1>
       </div>
       <div class="login-box">          
           <form method="post" class="login-form" action="<?= base_url('C_User/login')?>">

@@ -60,24 +60,16 @@
                                     <td>: 0</td>
                                 </tr>
                                 <tr>
-                                    <td>Sangat Kurang</td>
-                                    <td>: 1-60</td>
-                                </tr>
-                                <tr>
-                                    <td>Kurang</td>
-                                    <td>: 61-70</td>
-                                </tr>
-                                <tr>
-                                    <td>Cukup</td>
-                                    <td>: 71-80</td>
+                                    <td>Cukuo</td>
+                                    <td>: 1-2</td>
                                 </tr>
                                 <tr>
                                     <td>Baik</td>
-                                    <td>: 81-90</td>
+                                    <td>: 2-3</td>
                                 </tr>
                                 <tr>
                                     <td>Sangat Baik</td>
-                                    <td>: 91-100</td>
+                                    <td>: >3</td>
                                 </tr>
                                 </tbody>
                             </table>

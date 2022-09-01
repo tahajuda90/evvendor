@@ -16,14 +16,19 @@
         <input class="form-control col-9" type="text" name="rkn_nama" value="<?=$rkn_nama?>">
     </div>
     
-    <div class="form-group col-6">
+    <div class="form-group col-4">
         <label class="control-label">NPWP Perusahaan</label>
         <input class="form-control" id="npwp" type="text" name="rkn_npwp" value="<?=$rkn_npwp?>">
     </div>
 
-    <div class="form-group col-6">
+    <div class="form-group col-4">
         <label class="control-label">No PKP Perusahaan</label>
         <input class="form-control" type="text" name="rkn_pkp" value="<?=$rkn_pkp?>">
+    </div>
+    
+    <div class="form-group col-4">
+        <label class="control-label">Modal Perusahaan</label>
+        <input class="form-control" type="text" name="modal" value="<?=$modal?>">
     </div>
 
     <div class="form-group col-4">

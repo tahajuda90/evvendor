@@ -1,7 +1,7 @@
 <aside class="app-sidebar">
-    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="<?= base_url('assets/Lambang_Kabupaten_Mojokerto.png')?>" style="height: 75px;width: 50px;">
+    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="<?= base_url('assets/logo-pemkot.png')?>" style="height: 75px;width: 50px;">
         <div>
-          <p class="app-sidebar__user-name">Kab. Mojokerto</p>
+          <p class="app-sidebar__user-name">Kota Kediri</p>
           <p class="app-sidebar__user-designation">Bag. <br>Pengadaan Barang/Jasa</p>
         </div>
       </div>

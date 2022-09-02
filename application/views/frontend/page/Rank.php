@@ -24,7 +24,7 @@
                     <td><?=$ra->kbp?></td>
                     <td><?=$ra->jml_tndr?></td>
                     <td><?=$ra->jml_nontndr?></td>
-                    <td><?=round($ra->rating_nilai,1)?> %</td>
+                    <td><?=rating($ra->rating_nilai,3)?> </td>
                 </tr>
                 <?php
                     }

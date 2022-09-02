@@ -79,7 +79,7 @@
                                     <br>
                                     <?=$pkt->nama_kualifikasi?>
                                 </td>
-                                <td><?=number_format($pkt->rating_nilai, 2, ',', ' ')?></td>
+                                <td><?= rating($pkt->rating_nilai, 3)?></td>
                                 <td><?php 
                                 if( $pkt->id_kualifikasi != null){
                                 if($pkt->total_nilai == null){

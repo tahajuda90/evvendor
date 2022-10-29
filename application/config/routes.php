@@ -61,6 +61,7 @@ $route['rekanan/detail/prl/(:any)'] = 'C_RknDetail/create_prl/$1';
 $route['penilaian'] = 'C_Skoring/index';
 $route['penilaian/create/(:any)'] = 'C_Skoring/skorcreate/$1';
 $route['penilaian/update/(:any)'] = 'C_Skoring/skorupdate/$1';
+$route['penilaian/cetak/(:any)'] = 'C_Skoring/cetak_paket/$1';
 
 
 $route['user'] = 'C_User/index';

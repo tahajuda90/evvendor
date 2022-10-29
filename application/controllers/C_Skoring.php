@@ -80,6 +80,14 @@ class C_Skoring extends CI_Controller{
         }
     }
     
+    public function cetak_paket($id_kontrak){
+        $data['kontrak'] = $this->M_Kontrak->get_by_id($id_kontrak);
+        $data['pkt'] = $this->M_Paket->get_by_id($data['kontrak']->id_paket);
+        $data['rekanan'] = $this->M_Rekanan->get_by_id($data['kontrak']->id_rekanan);
+        $data['indikator'] = $this->M_Skoring->get_indikator($data['kontrak']->id_kontrak);
+        $this->load->view('print/Pkt_Skoring',$data);
+    }
+    
     public function cetak(){
 //        print_r($this->input->get());
         $data['pkt'] = $this->M_Skoring->get_paket();

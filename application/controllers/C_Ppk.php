@@ -15,4 +15,8 @@ class C_Ppk extends CI_Controller{
         $data['page'] = 'page/Ppk';
         $this->load->view('Main_v',$data);
     }
+    
+    public function cek_ppk(){
+        
+    }
 }

@@ -51,5 +51,11 @@ class M_Paket extends MY_Model{
         $this->db->join($this->M_Satker->table,$this->M_Satker->table.'.id_satker = '.$this->table.'.id_satker','LEFT');
         return $this->db->get($this->table)->result();
     }
+    
+    public function get_ppk(){
+        $this->db->select($this->table.'.ppk_id');
+        $this->db->distinct();
+        return $this->db->get($this->table)->result();
+    }
 }
 

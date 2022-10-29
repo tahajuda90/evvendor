@@ -322,5 +322,13 @@ class C_Integrasi extends CI_Controller{
             redirect('home');
         }        
     }
+    
+    public function tarik_ppk(){
+        if($this->M_IPpk->tarik()){
+            redirect('ppk');
+        }else{
+            redirect('ppk');
+        }
+    }
 }
 

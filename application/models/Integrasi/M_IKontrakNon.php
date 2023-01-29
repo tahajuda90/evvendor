@@ -20,7 +20,7 @@ class M_IKontrakNon extends MY_Integrate{
             'kontrak_no'=> $kontr->kontrak_no,
             'nilai_kontrak'=> $kontr->kontrak_nilai
         );
-            if ($this->M_Kontrak->insert($data,array('id_paket'=>$pkt->id_paket,'lls_id'=>$kontr->lls_id))){
+            if ($this->M_Kontrak->insert($data,array('id_paket'=>$pkt->id_paket,'pkt_id'=>$kontr->pkt_id))){
                 return true;
             }else{
                 $kntrk = $this->M_Kontrak->get_cond(array('id_paket'=>$pkt->id_paket));

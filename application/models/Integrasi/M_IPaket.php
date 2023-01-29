@@ -55,7 +55,7 @@ select * from taha_paket_nontender
             'pkt_hps'=> $pkt->pkt_hps,
             'pkt_tgl_buat'=> $pkt->pkt_tgl_buat
         );
-        return $this->M_Paket->insert($data,array('lls_id'=>$pkt->lls_id));
+        return $this->M_Paket->insert($data,array('lls_id'=>$pkt->lls_id,'is_nontender'=> $pkt->status));
     }
     
 }
